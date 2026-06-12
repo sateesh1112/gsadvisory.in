@@ -1216,6 +1216,303 @@ button{cursor:pointer;font-family:var(--font-b);}
         </div>
       </div>
 
+
+      <!-- ─── TEAM MANAGEMENT PAGE ─── -->
+      <div class="page-section" id="page-emp-team">
+        <div class="page-header">
+          <h1>Team Management</h1>
+          <p>Monitor workload, productivity and task allocation across your team</p>
+        </div>
+        <div class="kpi-grid">
+          <div class="kpi-card"><div class="kpi-icon blue"><i class="fas fa-user-friends"></i></div><div><div class="kpi-num">8</div><div class="kpi-label">Active Employees</div><div class="kpi-trend up">All online today</div></div></div>
+          <div class="kpi-card"><div class="kpi-icon orange"><i class="fas fa-tasks"></i></div><div><div class="kpi-num">47</div><div class="kpi-label">Tasks Assigned</div><div class="kpi-trend down">12 overdue across team</div></div></div>
+          <div class="kpi-card"><div class="kpi-icon green"><i class="fas fa-check-double"></i></div><div><div class="kpi-num">89%</div><div class="kpi-label">Completion Rate</div><div class="kpi-trend up">+4% vs last month</div></div></div>
+          <div class="kpi-card"><div class="kpi-icon purple"><i class="fas fa-star"></i></div><div><div class="kpi-num">4.7</div><div class="kpi-label">Avg Performance</div><div class="kpi-trend up">Out of 5.0</div></div></div>
+        </div>
+        <div class="grid-equal">
+          <div class="widget">
+            <div class="widget-head"><h3><i class="fas fa-users" style="color:var(--blue);margin-right:8px;"></i>Team Members</h3><button class="tb-btn" style="padding:6px 16px;font-size:12px;" onclick="openModal('addTaskModal')"><i class="fas fa-plus"></i> Add Member</button></div>
+            <table class="dash-table">
+              <thead><tr><th>Employee</th><th>Role</th><th>Active Tasks</th><th>Completed</th><th>Status</th></tr></thead>
+              <tbody>
+                <tr><td><div style="display:flex;align-items:center;gap:10px;"><div style="width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#0d1b2a,#0f7b6c);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:12px;flex-shrink:0;">SK</div><div><div class="td-name">Suresh Kumar</div><div class="td-sub">Senior Tax Associate</div></div></div></td><td>Employee</td><td><span class="wh-badge badge-blue">8</span></td><td>47</td><td><span class="pill pill-green">Active</span></td></tr>
+                <tr><td><div style="display:flex;align-items:center;gap:10px;"><div style="width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#c8a951,#9a6e1f);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:12px;flex-shrink:0;">DR</div><div><div class="td-name">Deepa Rao</div><div class="td-sub">Accounts Executive</div></div></div></td><td>Employee</td><td><span class="wh-badge badge-blue">6</span></td><td>38</td><td><span class="pill pill-green">Active</span></td></tr>
+                <tr><td><div style="display:flex;align-items:center;gap:10px;"><div style="width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#8b5cf6,#7c3aed);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:12px;flex-shrink:0;">AM</div><div><div class="td-name">Anita Menon</div><div class="td-sub">GST Specialist</div></div></div></td><td>Employee</td><td><span class="wh-badge badge-orange">11</span></td><td>52</td><td><span class="pill pill-green">Active</span></td></tr>
+                <tr><td><div style="display:flex;align-items:center;gap:10px;"><div style="width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#ef4444,#dc2626);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:12px;flex-shrink:0;">RV</div><div><div class="td-name">Rahul Verma</div><div class="td-sub">Audit Associate</div></div></div></td><td>Employee</td><td><span class="wh-badge badge-blue">5</span></td><td>29</td><td><span class="pill pill-orange">On Leave</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="widget">
+            <div class="widget-head"><h3><i class="fas fa-chart-bar" style="color:var(--gold-dark);margin-right:8px;"></i>Workload Distribution</h3></div>
+            <div>
+              <div class="progress-wrap"><div class="progress-label"><span class="progress-name">Suresh Kumar</span><span class="progress-val">8 tasks</span></div><div class="progress-bar-track"><div class="progress-bar-fill fill-blue" style="width:73%"></div></div></div>
+              <div class="progress-wrap"><div class="progress-label"><span class="progress-name">Anita Menon</span><span class="progress-val">11 tasks</span></div><div class="progress-bar-track"><div class="progress-bar-fill fill-gold" style="width:100%"></div></div></div>
+              <div class="progress-wrap"><div class="progress-label"><span class="progress-name">Deepa Rao</span><span class="progress-val">6 tasks</span></div><div class="progress-bar-track"><div class="progress-bar-fill fill-green" style="width:55%"></div></div></div>
+              <div class="progress-wrap"><div class="progress-label"><span class="progress-name">Rahul Verma</span><span class="progress-val">5 tasks</span></div><div class="progress-bar-track"><div class="progress-bar-fill fill-purple" style="width:45%"></div></div></div>
+            </div>
+            <div style="padding:16px 22px;">
+              <div style="background:rgba(249,115,22,0.08);border:1px solid rgba(249,115,22,0.2);border-radius:8px;padding:12px 16px;">
+                <div style="font-size:13px;font-weight:700;color:var(--orange);margin-bottom:4px;"><i class="fas fa-exclamation-circle" style="margin-right:6px;"></i>Anita Menon is overloaded</div>
+                <div style="font-size:12px;color:var(--g500);">11 active tasks — consider redistributing 3-4 tasks to Deepa Rao</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="widget">
+          <div class="widget-head"><h3><i class="fas fa-history" style="color:var(--blue);margin-right:8px;"></i>Recent Team Activity</h3></div>
+          <div class="activity-item"><div class="act-dot green"><i class="fas fa-check"></i></div><div><div class="act-text"><strong>Suresh Kumar</strong> completed ITR Filing for Priya Sharma</div><div class="act-time">2 hours ago</div></div></div>
+          <div class="activity-item"><div class="act-dot blue"><i class="fas fa-file-invoice"></i></div><div><div class="act-text"><strong>Deepa Rao</strong> generated Invoice #GS-0284 for Rahul Traders</div><div class="act-time">4 hours ago</div></div></div>
+          <div class="activity-item"><div class="act-dot gold"><i class="fas fa-user-plus"></i></div><div><div class="act-text"><strong>Anita Menon</strong> added Al Noor Trading LLC as a new client</div><div class="act-time">Yesterday</div></div></div>
+          <div class="activity-item"><div class="act-dot red"><i class="fas fa-bell"></i></div><div><div class="act-text"><strong>Suresh Kumar</strong> sent TDS reminder to Mehta & Sons</div><div class="act-time">Yesterday</div></div></div>
+        </div>
+      </div>
+
+      <!-- ─── REPORTS PAGE ─── -->
+      <div class="page-section" id="page-emp-reports">
+        <div class="page-header">
+          <h1>Reports & Analytics</h1>
+          <p>Real-time visibility into firm performance, compliance and financials</p>
+        </div>
+        <div class="quick-actions" style="grid-template-columns:repeat(5,1fr);">
+          <div class="qa-btn"><div class="qa-icon" style="background:rgba(15,123,108,0.08);color:var(--blue)"><i class="fas fa-file-pdf"></i></div><span class="qa-label">Work Status Report</span></div>
+          <div class="qa-btn"><div class="qa-icon" style="background:rgba(200,169,81,0.1);color:var(--gold-dark)"><i class="fas fa-rupee-sign"></i></div><span class="qa-label">Revenue Report</span></div>
+          <div class="qa-btn"><div class="qa-icon" style="background:rgba(34,197,94,0.08);color:#16a34a"><i class="fas fa-calendar-check"></i></div><span class="qa-label">Compliance Report</span></div>
+          <div class="qa-btn"><div class="qa-icon" style="background:rgba(139,92,246,0.08);color:var(--purple)"><i class="fas fa-users"></i></div><span class="qa-label">Client Report</span></div>
+          <div class="qa-btn"><div class="qa-icon" style="background:rgba(249,115,22,0.08);color:var(--orange)"><i class="fas fa-user-tie"></i></div><span class="qa-label">Productivity Report</span></div>
+        </div>
+        <div class="kpi-grid">
+          <div class="kpi-card"><div class="kpi-icon green"><i class="fas fa-rupee-sign"></i></div><div><div class="kpi-num">₹4.2L</div><div class="kpi-label">Revenue This Month</div><div class="kpi-trend up"><i class="fas fa-arrow-up"></i> +18% vs last month</div></div></div>
+          <div class="kpi-card"><div class="kpi-icon blue"><i class="fas fa-users"></i></div><div><div class="kpi-num">47</div><div class="kpi-label">Active Clients</div><div class="kpi-trend up"><i class="fas fa-arrow-up"></i> +4 new this month</div></div></div>
+          <div class="kpi-card"><div class="kpi-icon orange"><i class="fas fa-tasks"></i></div><div><div class="kpi-num">89%</div><div class="kpi-label">Task Completion Rate</div><div class="kpi-trend up"><i class="fas fa-arrow-up"></i> +4% vs last month</div></div></div>
+          <div class="kpi-card"><div class="kpi-icon red"><i class="fas fa-exclamation-circle"></i></div><div><div class="kpi-num">3</div><div class="kpi-label">Missed Deadlines</div><div class="kpi-trend down"><i class="fas fa-arrow-down"></i> Target: 0</div></div></div>
+        </div>
+        <div class="grid-equal">
+          <div class="widget">
+            <div class="widget-head"><h3><i class="fas fa-chart-line" style="color:var(--gold-dark);margin-right:8px;"></i>Revenue Trend — 2025</h3></div>
+            <div style="padding:20px 22px 6px;">
+              <div class="mini-bars" style="height:80px;">
+                <div class="mini-bar gold" style="height:42%;" title="Jan: ₹2.1L"></div>
+                <div class="mini-bar gold" style="height:50%;" title="Feb: ₹2.5L"></div>
+                <div class="mini-bar gold" style="height:46%;" title="Mar: ₹2.3L"></div>
+                <div class="mini-bar gold" style="height:65%;" title="Apr: ₹3.2L"></div>
+                <div class="mini-bar gold" style="height:58%;" title="May: ₹2.9L"></div>
+                <div class="mini-bar gold" style="height:72%;" title="Jun: ₹3.6L"></div>
+                <div class="mini-bar" style="height:84%;opacity:1;background:linear-gradient(0deg,#0d1b2a,#0f7b6c);" title="Jul: ₹4.2L"></div>
+              </div>
+              <div class="bar-labels"><div class="bar-label">Jan</div><div class="bar-label">Feb</div><div class="bar-label">Mar</div><div class="bar-label">Apr</div><div class="bar-label">May</div><div class="bar-label">Jun</div><div class="bar-label">Jul</div></div>
+            </div>
+            <div style="padding:12px 22px 16px;display:flex;gap:16px;flex-wrap:wrap;">
+              <div style="font-size:12px;color:var(--g500);">Total YTD: <strong style="color:var(--navy);">₹20.8L</strong></div>
+              <div style="font-size:12px;color:var(--g500);">Avg/Month: <strong style="color:var(--navy);">₹2.97L</strong></div>
+              <div style="font-size:12px;color:var(--g500);">Best Month: <strong style="color:#16a34a;">Jul ₹4.2L</strong></div>
+            </div>
+          </div>
+          <div class="widget">
+            <div class="widget-head"><h3><i class="fas fa-pie-chart" style="color:var(--blue);margin-right:8px;"></i>Revenue by Service</h3></div>
+            <div>
+              <div class="progress-wrap"><div class="progress-label"><span class="progress-name">Tax & Compliance</span><span class="progress-val">48% — ₹2.02L</span></div><div class="progress-bar-track"><div class="progress-bar-fill fill-blue" style="width:48%"></div></div></div>
+              <div class="progress-wrap"><div class="progress-label"><span class="progress-name">Accounting Services</span><span class="progress-val">28% — ₹1.18L</span></div><div class="progress-bar-track"><div class="progress-bar-fill fill-gold" style="width:28%"></div></div></div>
+              <div class="progress-wrap"><div class="progress-label"><span class="progress-name">Virtual CFO</span><span class="progress-val">16% — ₹0.67L</span></div><div class="progress-bar-track"><div class="progress-bar-fill fill-green" style="width:16%"></div></div></div>
+              <div class="progress-wrap"><div class="progress-label"><span class="progress-name">Advisory</span><span class="progress-val">8% — ₹0.34L</span></div><div class="progress-bar-track"><div class="progress-bar-fill fill-purple" style="width:8%"></div></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="grid-3">
+          <div class="widget">
+            <div class="widget-head"><h3><i class="fas fa-calendar-check" style="color:var(--red);margin-right:8px;"></i>Compliance Summary</h3></div>
+            <div style="padding:20px 22px;">
+              <div style="display:flex;justify-content:space-between;margin-bottom:12px;"><span style="font-size:13px;color:var(--g500);">Filed on time</span><span style="font-weight:700;color:#16a34a;">31</span></div>
+              <div style="display:flex;justify-content:space-between;margin-bottom:12px;"><span style="font-size:13px;color:var(--g500);">Filed late</span><span style="font-weight:700;color:var(--orange);">3</span></div>
+              <div style="display:flex;justify-content:space-between;margin-bottom:12px;"><span style="font-size:13px;color:var(--g500);">Pending</span><span style="font-weight:700;color:var(--red);">8</span></div>
+              <div style="display:flex;justify-content:space-between;border-top:1px solid var(--g100);padding-top:12px;"><span style="font-size:13px;font-weight:700;color:var(--navy);">On-Time Rate</span><span style="font-weight:800;color:#16a34a;font-size:16px;">91%</span></div>
+            </div>
+          </div>
+          <div class="widget">
+            <div class="widget-head"><h3><i class="fas fa-user-check" style="color:var(--blue);margin-right:8px;"></i>Top Performers</h3></div>
+            <div style="padding:16px 22px;">
+              <div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--g50);"><div style="font-size:16px;">🥇</div><div><div style="font-size:13px;font-weight:700;color:var(--navy);">Anita Menon</div><div style="font-size:11px;color:var(--g300);">52 tasks completed</div></div><span class="pill pill-green" style="margin-left:auto;">4.9/5</span></div>
+              <div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--g50);"><div style="font-size:16px;">🥈</div><div><div style="font-size:13px;font-weight:700;color:var(--navy);">Suresh Kumar</div><div style="font-size:11px;color:var(--g300);">47 tasks completed</div></div><span class="pill pill-blue" style="margin-left:auto;">4.7/5</span></div>
+              <div style="display:flex;align-items:center;gap:12px;padding:10px 0;"><div style="font-size:16px;">🥉</div><div><div style="font-size:13px;font-weight:700;color:var(--navy);">Deepa Rao</div><div style="font-size:11px;color:var(--g300);">38 tasks completed</div></div><span class="pill pill-blue" style="margin-left:auto;">4.5/5</span></div>
+            </div>
+          </div>
+          <div class="widget">
+            <div class="widget-head"><h3><i class="fas fa-exclamation-triangle" style="color:var(--orange);margin-right:8px;"></i>Action Required</h3></div>
+            <div style="padding:16px 22px;display:flex;flex-direction:column;gap:10px;">
+              <div style="padding:10px 14px;background:rgba(239,68,68,0.06);border-left:3px solid var(--red);border-radius:4px;font-size:12.5px;color:var(--g700);"><strong style="color:var(--red);">3 overdue filings</strong> — GSTR-1, TDS Challan for 2 clients</div>
+              <div style="padding:10px 14px;background:rgba(249,115,22,0.06);border-left:3px solid var(--orange);border-radius:4px;font-size:12.5px;color:var(--g700);"><strong style="color:var(--orange);">₹1.05L outstanding</strong> — 3 invoices unpaid over 30 days</div>
+              <div style="padding:10px 14px;background:rgba(200,169,81,0.08);border-left:3px solid var(--gold);border-radius:4px;font-size:12.5px;color:var(--g700);"><strong style="color:var(--gold-dark);">2 new inquiries</strong> — website contact form submissions</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── REMINDERS PAGE ─── -->
+      <div class="page-section" id="page-emp-reminders">
+        <div class="page-header">
+          <h1>Reminders & Alerts</h1>
+          <p>Automated compliance reminders, due date alerts and client follow-ups</p>
+        </div>
+        <div class="toolbar">
+          <div class="tb-search"><i class="fas fa-search"></i><input placeholder="Search reminders..."/></div>
+          <button class="tb-filter"><i class="fas fa-filter"></i> All Types</button>
+          <button class="tb-btn" onclick="openModal('addTaskModal')"><i class="fas fa-plus"></i> New Reminder</button>
+        </div>
+        <div class="grid-equal" style="margin-bottom:20px;">
+          <div class="widget">
+            <div class="widget-head"><h3><i class="fas fa-bell" style="color:var(--red);margin-right:8px;"></i>Overdue Alerts</h3><span class="wh-badge badge-red">3 Urgent</span></div>
+            <div class="compliance-list">
+              <div class="compliance-item"><div class="comp-date urgent">05<div class="comp-date-month">Jul</div></div><div class="comp-body"><div class="comp-title">GSTR-1 — Rahul Traders</div><div class="comp-sub">Monthly return overdue by 7 days</div></div><div class="comp-action" style="color:var(--red);">Send Reminder</div></div>
+              <div class="compliance-item"><div class="comp-date urgent">07<div class="comp-date-month">Jul</div></div><div class="comp-body"><div class="comp-title">TDS Challan — Mehta & Sons</div><div class="comp-sub">Q1 challan deposit overdue</div></div><div class="comp-action" style="color:var(--red);">Send Reminder</div></div>
+              <div class="compliance-item"><div class="comp-date urgent">05<div class="comp-date-month">Jul</div></div><div class="comp-body"><div class="comp-title">Invoice Payment — Kumar & Group</div><div class="comp-sub">Invoice #GS-0281 overdue 45 days</div></div><div class="comp-action" style="color:var(--red);">Escalate</div></div>
+            </div>
+          </div>
+          <div class="widget">
+            <div class="widget-head"><h3><i class="fas fa-clock" style="color:var(--orange);margin-right:8px;"></i>Upcoming This Week</h3></div>
+            <div class="compliance-list">
+              <div class="compliance-item"><div class="comp-date upcoming">11<div class="comp-date-month">Jul</div></div><div class="comp-body"><div class="comp-title">TDS Return Q1 (26Q)</div><div class="comp-sub">6 clients — data pending from 2</div></div><div class="comp-action">Prepare</div></div>
+              <div class="compliance-item"><div class="comp-date upcoming">15<div class="comp-date-month">Jul</div></div><div class="comp-body"><div class="comp-title">GSTR-3B Monthly</div><div class="comp-sub">All GST registered clients</div></div><div class="comp-action">Prepare</div></div>
+              <div class="compliance-item"><div class="comp-date upcoming">15<div class="comp-date-month">Jul</div></div><div class="comp-body"><div class="comp-title">Advance Tax Q1</div><div class="comp-sub">5 clients — estimates ready</div></div><div class="comp-action">Review</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="widget">
+          <div class="widget-head"><h3><i class="fas fa-paper-plane" style="color:var(--blue);margin-right:8px;"></i>Reminder Log — Sent This Month</h3></div>
+          <table class="dash-table">
+            <thead><tr><th>Date Sent</th><th>Client</th><th>Reminder Type</th><th>Sent By</th><th>Method</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td>10 Jul 2025</td><td>Mehta & Sons</td><td>TDS Challan Due</td><td>Suresh K.</td><td><span class="wh-badge badge-blue">Email</span></td><td><span class="pill pill-green">Delivered</span></td></tr>
+              <tr><td>08 Jul 2025</td><td>Rahul Traders</td><td>GSTR-1 Overdue</td><td>System</td><td><span class="wh-badge badge-blue">Email</span></td><td><span class="pill pill-green">Delivered</span></td></tr>
+              <tr><td>05 Jul 2025</td><td>Kumar & Group</td><td>Invoice Payment Due</td><td>Suresh K.</td><td><span class="wh-badge badge-blue">Email</span></td><td><span class="pill pill-orange">Opened</span></td></tr>
+              <tr><td>01 Jul 2025</td><td>All GST Clients</td><td>GSTR-3B Reminder</td><td>System</td><td><span class="wh-badge badge-blue">Email</span></td><td><span class="pill pill-green">Delivered</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ─── CLIENT SERVICES PAGE ─── -->
+      <div class="page-section" id="page-client-services">
+        <div class="page-header">
+          <h1>My Services</h1>
+          <p>Track status of all your ongoing compliance and advisory services</p>
+        </div>
+        <div class="widget" style="margin-bottom:20px;">
+          <div class="widget-head"><h3><i class="fas fa-clipboard-check" style="color:var(--blue);margin-right:8px;"></i>Service Status — All Time</h3></div>
+          <table class="dash-table">
+            <thead><tr><th>Service</th><th>Period</th><th>Due Date</th><th>Status</th><th>Filed On</th><th>Assigned To</th></tr></thead>
+            <tbody>
+              <tr><td class="td-name">GSTR-3B</td><td>Jun 2025</td><td style="color:var(--red);font-weight:600;">15 Jul 2025</td><td><span class="pill pill-red">Pending</span></td><td>—</td><td>Suresh K.</td></tr>
+              <tr><td class="td-name">GSTR-1</td><td>Jun 2025</td><td>07 Jul 2025</td><td><span class="pill pill-orange">In Progress</span></td><td>—</td><td>Suresh K.</td></tr>
+              <tr><td class="td-name">GSTR-3B</td><td>May 2025</td><td>15 Jun 2025</td><td><span class="pill pill-green">Filed</span></td><td>14 Jun 2025</td><td>Suresh K.</td></tr>
+              <tr><td class="td-name">GSTR-3B</td><td>Apr 2025</td><td>15 May 2025</td><td><span class="pill pill-green">Filed</span></td><td>12 May 2025</td><td>Anita M.</td></tr>
+              <tr><td class="td-name">ITR</td><td>AY 2024-25</td><td>31 Jul 2024</td><td><span class="pill pill-green">Filed</span></td><td>28 Jul 2024</td><td>Suresh K.</td></tr>
+              <tr><td class="td-name">Books of Accounts</td><td>FY 2024-25</td><td>30 Sep 2025</td><td><span class="pill pill-blue">In Review</span></td><td>—</td><td>Deepa R.</td></tr>
+              <tr><td class="td-name">Advance Tax Q1</td><td>AY 2025-26</td><td>15 Jun 2025</td><td><span class="pill pill-green">Paid</span></td><td>12 Jun 2025</td><td>Suresh K.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="grid-equal">
+          <div class="widget">
+            <div class="widget-head"><h3><i class="fas fa-calendar-alt" style="color:var(--red);margin-right:8px;"></i>My Upcoming Deadlines</h3></div>
+            <div class="compliance-list">
+              <div class="compliance-item"><div class="comp-date urgent">15<div class="comp-date-month">Jul</div></div><div class="comp-body"><div class="comp-title">GSTR-3B Filing</div><div class="comp-sub">Please share purchase data by Jul 12</div></div><div class="comp-action">Share Data</div></div>
+              <div class="compliance-item"><div class="comp-date upcoming">28<div class="comp-date-month">Jul</div></div><div class="comp-body"><div class="comp-title">Advance Tax Q1</div><div class="comp-sub">Estimated liability: ₹45,000</div></div><div class="comp-action">Approve</div></div>
+              <div class="compliance-item"><div class="comp-date normal">31<div class="comp-date-month">Jul</div></div><div class="comp-body"><div class="comp-title">ITR Filing AY 2025-26</div><div class="comp-sub">Documents checklist sent to you</div></div><div class="comp-action">Upload Docs</div></div>
+            </div>
+          </div>
+          <div class="widget">
+            <div class="widget-head"><h3><i class="fas fa-list-ul" style="color:var(--gold-dark);margin-right:8px;"></i>Documents Needed From You</h3></div>
+            <div style="padding:16px 22px;display:flex;flex-direction:column;gap:10px;">
+              <div style="display:flex;align-items:center;gap:12px;padding:12px 14px;background:rgba(239,68,68,0.04);border:1px solid rgba(239,68,68,0.12);border-radius:6px;">
+                <i class="fas fa-file-upload" style="color:var(--red);font-size:16px;"></i>
+                <div style="flex:1;"><div style="font-size:13px;font-weight:600;color:var(--navy);">Purchase Register — June 2025</div><div style="font-size:11.5px;color:var(--g300);">Required for GSTR-3B by Jul 12</div></div>
+                <button class="tb-btn" style="padding:6px 14px;font-size:11px;">Upload</button>
+              </div>
+              <div style="display:flex;align-items:center;gap:12px;padding:12px 14px;background:rgba(249,115,22,0.04);border:1px solid rgba(249,115,22,0.12);border-radius:6px;">
+                <i class="fas fa-file-upload" style="color:var(--orange);font-size:16px;"></i>
+                <div style="flex:1;"><div style="font-size:13px;font-weight:600;color:var(--navy);">Form 26AS / AIS</div><div style="font-size:11.5px;color:var(--g300);">Required for ITR filing</div></div>
+                <button class="tb-btn" style="padding:6px 14px;font-size:11px;">Upload</button>
+              </div>
+              <div style="display:flex;align-items:center;gap:12px;padding:12px 14px;background:rgba(34,197,94,0.04);border:1px solid rgba(34,197,94,0.12);border-radius:6px;">
+                <i class="fas fa-check-circle" style="color:#16a34a;font-size:16px;"></i>
+                <div style="flex:1;"><div style="font-size:13px;font-weight:600;color:var(--navy);">Bank Statements Q1</div><div style="font-size:11.5px;color:var(--g300);">Already received — thank you</div></div>
+                <span class="pill pill-green">Done</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── CLIENT INVOICES PAGE ─── -->
+      <div class="page-section" id="page-client-invoices">
+        <div class="page-header">
+          <h1>My Invoices</h1>
+          <p>View and download all invoices from GS Advisory</p>
+        </div>
+        <div class="kpi-grid">
+          <div class="kpi-card"><div class="kpi-icon green"><i class="fas fa-check-circle"></i></div><div><div class="kpi-num">₹83,500</div><div class="kpi-label">Paid This Year</div></div></div>
+          <div class="kpi-card"><div class="kpi-icon red"><i class="fas fa-exclamation-circle"></i></div><div><div class="kpi-num">₹18,000</div><div class="kpi-label">Outstanding</div></div></div>
+          <div class="kpi-card"><div class="kpi-icon blue"><i class="fas fa-file-invoice"></i></div><div><div class="kpi-num">6</div><div class="kpi-label">Total Invoices</div></div></div>
+          <div class="kpi-card"><div class="kpi-icon orange"><i class="fas fa-clock"></i></div><div><div class="kpi-num">1</div><div class="kpi-label">Pending Payment</div></div></div>
+        </div>
+        <div class="widget">
+          <table class="dash-table">
+            <thead><tr><th>Invoice #</th><th>Service</th><th>Amount</th><th>Date</th><th>Due Date</th><th>Status</th><th>Action</th></tr></thead>
+            <tbody>
+              <tr><td class="td-name">GS-0284</td><td>GST Filing — June 2025</td><td style="font-weight:700;">₹18,000</td><td>01 Jul 2025</td><td style="color:var(--red);font-weight:600;">15 Jul 2025</td><td><span class="pill pill-red">Due</span></td><td><span class="cc-view">Pay Now</span></td></tr>
+              <tr><td class="td-name">GS-0271</td><td>GST Filing — May 2025</td><td style="font-weight:700;">₹18,000</td><td>01 Jun 2025</td><td>15 Jun 2025</td><td><span class="pill pill-green">Paid</span></td><td><span class="cc-view">Download</span></td></tr>
+              <tr><td class="td-name">GS-0258</td><td>GST + Accounts — Apr 2025</td><td style="font-weight:700;">₹24,500</td><td>01 May 2025</td><td>15 May 2025</td><td><span class="pill pill-green">Paid</span></td><td><span class="cc-view">Download</span></td></tr>
+              <tr><td class="td-name">GS-0242</td><td>ITR Filing AY 2024-25</td><td style="font-weight:700;">₹8,500</td><td>15 Jul 2024</td><td>31 Jul 2024</td><td><span class="pill pill-green">Paid</span></td><td><span class="cc-view">Download</span></td></tr>
+            </tbody>
+          </table>
+          <div class="invoice-total">
+            <div class="inv-total-item"><div class="inv-total-label">Total Billed</div><div class="inv-total-val">₹1,01,500</div></div>
+            <div class="inv-total-item"><div class="inv-total-label">Paid</div><div class="inv-total-val green">₹83,500</div></div>
+            <div class="inv-total-item"><div class="inv-total-label">Outstanding</div><div class="inv-total-val" style="color:var(--red)">₹18,000</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── CLIENT SUPPORT PAGE ─── -->
+      <div class="page-section" id="page-client-support">
+        <div class="page-header">
+          <h1>Contact & Support</h1>
+          <p>Reach your GS Advisory team directly</p>
+        </div>
+        <div class="grid-3" style="margin-bottom:20px;">
+          <div class="widget" style="text-align:center;padding:32px 24px;">
+            <div style="width:56px;height:56px;background:linear-gradient(135deg,#0d1b2a,#0f7b6c);border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;"><i class="fas fa-phone" style="color:#c8a951;font-size:20px;"></i></div>
+            <h3 style="font-family:var(--font-d);font-size:17px;color:var(--navy);margin-bottom:8px;">Call Us</h3>
+            <p style="font-size:13px;color:var(--g500);margin-bottom:16px;">Available Mon–Sat, 9AM–6PM</p>
+            <a href="tel:+971527251804" style="display:block;padding:10px;background:var(--navy);color:#fff;border-radius:6px;font-size:13px;font-weight:600;margin-bottom:8px;">+971 52 725 1804 (UAE)</a>
+            <a href="tel:+919985752173" style="display:block;padding:10px;background:var(--g50);color:var(--navy);border-radius:6px;font-size:13px;font-weight:600;border:1px solid var(--g100);">+91 99857 52173 (India)</a>
+          </div>
+          <div class="widget" style="text-align:center;padding:32px 24px;">
+            <div style="width:56px;height:56px;background:linear-gradient(135deg,#c8a951,#9a6e1f);border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;"><i class="fas fa-envelope" style="color:#fff;font-size:20px;"></i></div>
+            <h3 style="font-family:var(--font-d);font-size:17px;color:var(--navy);margin-bottom:8px;">Email Us</h3>
+            <p style="font-size:13px;color:var(--g500);margin-bottom:16px;">Response within 24 business hours</p>
+            <a href="mailto:admin@gsadvisory.in" style="display:block;padding:10px;background:var(--gold);color:var(--navy);border-radius:6px;font-size:13px;font-weight:700;">admin@gsadvisory.in</a>
+          </div>
+          <div class="widget" style="text-align:center;padding:32px 24px;">
+            <div style="width:56px;height:56px;background:linear-gradient(135deg,#22c55e,#16a34a);border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;"><i class="fab fa-whatsapp" style="color:#fff;font-size:22px;"></i></div>
+            <h3 style="font-family:var(--font-d);font-size:17px;color:var(--navy);margin-bottom:8px;">WhatsApp</h3>
+            <p style="font-size:13px;color:var(--g500);margin-bottom:16px;">Quick queries and document sharing</p>
+            <a href="https://wa.me/971527251804" target="_blank" style="display:block;padding:10px;background:#22c55e;color:#fff;border-radius:6px;font-size:13px;font-weight:600;">Message on WhatsApp</a>
+          </div>
+        </div>
+        <div class="widget">
+          <div class="widget-head"><h3><i class="fas fa-paper-plane" style="color:var(--blue);margin-right:8px;"></i>Send a Message</h3></div>
+          <div style="padding:24px 28px;">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+              <div><label class="dm-label">Subject</label><input class="dm-input" placeholder="e.g. Query about GST filing"/></div>
+              <div><label class="dm-label">Priority</label><select class="dm-select"><option>Normal</option><option>Urgent</option></select></div>
+            </div>
+            <label class="dm-label">Message</label>
+            <textarea class="dm-textarea" placeholder="Describe your query in detail..."></textarea>
+            <button class="dm-btn-save" style="margin-top:8px;"><i class="fas fa-paper-plane"></i> Send Message</button>
+          </div>
+        </div>
+      </div>
+
       <!-- ─── CLIENT PORTAL DASHBOARD ─── -->
       <div class="page-section" id="page-client-dashboard">
         <div class="page-header">
@@ -1364,6 +1661,8 @@ var EMP_NAV = [
   { section:"TEAM" },
   { id:"emp-team",       icon:"fas fa-user-friends",       label:"Team",        badge_new:"NEW" },
   { id:"emp-reports",    icon:"fas fa-chart-bar",          label:"Reports" },
+  { section:"ALERTS" },
+  { id:"emp-reminders",  icon:"fas fa-bell",                label:"Reminders",   badge:"3" },
 ];
 var CLIENT_NAV = [
   { section:"MY PORTAL" },
