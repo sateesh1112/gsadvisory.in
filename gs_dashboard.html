@@ -746,7 +746,7 @@ button{cursor:pointer;font-family:var(--font-b);}
     </div>
     <button class="login-btn" onclick="doLogin()"><i class="fas fa-sign-in-alt"></i> Sign In to Portal</button>
     <p class="login-footer" style="margin-top:16px;font-size:11.5px;">
-      Demo: employee@gsadvisory.in / client@gsadvisory.in &nbsp;|&nbsp; password: <strong>gs@2025</strong>
+      Use your GS Advisory credentials to login. Contact admin for access.
     </p>
   </div>
 </div>
@@ -836,7 +836,7 @@ button{cursor:pointer;font-family:var(--font-b);}
           <div class="kpi-card">
             <div class="kpi-icon blue"><i class="fas fa-users"></i></div>
             <div>
-              <div class="kpi-num">47</div>
+              <div class="kpi-num" id="kpi-clients">47</div>
               <div class="kpi-label">Total Active Clients</div>
               <div class="kpi-trend up"><i class="fas fa-arrow-up"></i> +4 this month</div>
             </div>
@@ -844,7 +844,7 @@ button{cursor:pointer;font-family:var(--font-b);}
           <div class="kpi-card">
             <div class="kpi-icon orange"><i class="fas fa-tasks"></i></div>
             <div>
-              <div class="kpi-num">23</div>
+              <div class="kpi-num" id="kpi-tasks">23</div>
               <div class="kpi-label">Pending Tasks</div>
               <div class="kpi-trend down"><i class="fas fa-arrow-down"></i> 5 overdue</div>
             </div>
@@ -852,7 +852,7 @@ button{cursor:pointer;font-family:var(--font-b);}
           <div class="kpi-card">
             <div class="kpi-icon red"><i class="fas fa-exclamation-circle"></i></div>
             <div>
-              <div class="kpi-num">8</div>
+              <div class="kpi-num" id="kpi-overdue">8</div>
               <div class="kpi-label">Due This Week</div>
               <div class="kpi-trend down"><i class="fas fa-clock"></i> Urgent action needed</div>
             </div>
@@ -860,7 +860,7 @@ button{cursor:pointer;font-family:var(--font-b);}
           <div class="kpi-card">
             <div class="kpi-icon green"><i class="fas fa-rupee-sign"></i></div>
             <div>
-              <div class="kpi-num">₹4.2L</div>
+              <div class="kpi-num" id="kpi-revenue">₹4.2L</div>
               <div class="kpi-label">Revenue This Month</div>
               <div class="kpi-trend up"><i class="fas fa-arrow-up"></i> +18% vs last month</div>
             </div>
@@ -1139,7 +1139,7 @@ button{cursor:pointer;font-family:var(--font-b);}
         </div>
         <div class="kpi-grid">
           <div class="kpi-card"><div class="kpi-icon red"><i class="fas fa-exclamation-triangle"></i></div><div><div class="kpi-num">3</div><div class="kpi-label">Overdue Filings</div></div></div>
-          <div class="kpi-card"><div class="kpi-icon orange"><i class="fas fa-clock"></i></div><div><div class="kpi-num">8</div><div class="kpi-label">Due This Week</div></div></div>
+          <div class="kpi-card"><div class="kpi-icon orange"><i class="fas fa-clock"></i></div><div><div class="kpi-num" id="kpi-overdue">8</div><div class="kpi-label">Due This Week</div></div></div>
           <div class="kpi-card"><div class="kpi-icon blue"><i class="fas fa-calendar"></i></div><div><div class="kpi-num">14</div><div class="kpi-label">Due This Month</div></div></div>
           <div class="kpi-card"><div class="kpi-icon green"><i class="fas fa-check-circle"></i></div><div><div class="kpi-num">31</div><div class="kpi-label">Completed This Month</div></div></div>
         </div>
@@ -1390,26 +1390,103 @@ function toggleEye() {
   ico.className = inp.type === "password" ? "fas fa-eye inp-icon" : "fas fa-eye-slash inp-icon";
 }
 
-function doLogin() {
-  var email = document.getElementById("loginEmail").value.trim();
-  var pass  = document.getElementById("loginPass").value;
-  var err   = document.getElementById("loginError");
-  var u = USERS[email];
-  if (!u || u.pass !== pass) { err.classList.add("show"); return; }
-  err.classList.remove("show");
-  buildNav(u.role);
-  document.getElementById("sbAvatar").textContent = u.name.split(" ").map(function(w){return w[0];}).join("").substring(0,2);
-  document.getElementById("sbName").textContent = u.name;
-  document.getElementById("sbRole").textContent = u.roleLabel;
-  document.getElementById("tuAvatar").textContent = u.name.split(" ").map(function(w){return w[0];}).join("").substring(0,2);
-  document.getElementById("tuName").textContent = u.name;
-  document.getElementById("tuRole").textContent = u.roleLabel;
-  var today = new Date().toLocaleDateString("en-IN",{weekday:"long",year:"numeric",month:"long",day:"numeric"});
-  if(document.getElementById("todayDate")) document.getElementById("todayDate").textContent = today;
-  if(document.getElementById("clientDate")) document.getElementById("clientDate").textContent = today;
-  document.getElementById("loginScreen").style.display = "none";
-  document.getElementById("appShell").classList.add("active");
-  showPage(u.role === "employee" ? "emp-dashboard" : "client-dashboard");
+var API_BASE = 'https://gsadvisory-backend.onrender.com';
+var GS_TOKEN = null;
+var GS_USER  = null;
+
+// Check if coming from website with token already set
+(function() {
+  var t = localStorage.getItem('gs_token');
+  var u = localStorage.getItem('gs_user');
+  if (t && u) {
+    GS_TOKEN = t;
+    GS_USER  = JSON.parse(u);
+    bootApp(GS_USER);
+  }
+})();
+
+function bootApp(user) {
+  var initials = user.name.split(' ').map(function(w){return w[0];}).join('').substring(0,2);
+  document.getElementById('sbAvatar').textContent = initials;
+  document.getElementById('sbName').textContent   = user.name;
+  document.getElementById('sbRole').textContent   = user.designation || user.role;
+  document.getElementById('tuAvatar').textContent = initials;
+  document.getElementById('tuName').textContent   = user.name;
+  document.getElementById('tuRole').textContent   = user.designation || user.role;
+  var today = new Date().toLocaleDateString('en-IN',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+  if(document.getElementById('todayDate'))  document.getElementById('todayDate').textContent  = today;
+  if(document.getElementById('clientDate')) document.getElementById('clientDate').textContent = today;
+  buildNav(user.role);
+  document.getElementById('loginScreen').style.display = 'none';
+  document.getElementById('appShell').classList.add('active');
+  showPage(user.role === 'client' ? 'client-dashboard' : 'emp-dashboard');
+  // Load live stats
+  loadStats();
+}
+
+async function doLogin() {
+  var email = document.getElementById('loginEmail').value.trim();
+  var pass  = document.getElementById('loginPass').value;
+  var err   = document.getElementById('loginError');
+  var btn   = document.querySelector('.login-btn');
+
+  if (!email || !pass) { err.classList.add('show'); err.textContent = 'Enter email and password.'; return; }
+
+  btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Signing in...';
+  btn.disabled  = true;
+  err.classList.remove('show');
+
+  try {
+    var res  = await fetch(API_BASE + '/api/auth/login', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({ email: email, password: pass })
+    });
+    var data = await res.json();
+    if (!data.success) throw new Error(data.message);
+
+    GS_TOKEN = data.token;
+    GS_USER  = data.user;
+    localStorage.setItem('gs_token', GS_TOKEN);
+    localStorage.setItem('gs_user',  JSON.stringify(GS_USER));
+    bootApp(GS_USER);
+  } catch(e) {
+    err.classList.add('show');
+    err.textContent = e.message || 'Login failed. Check credentials.';
+    btn.innerHTML   = '<i class="fas fa-sign-in-alt"></i> Sign In to Portal';
+    btn.disabled    = false;
+  }
+}
+
+// API helper
+async function apiCall(endpoint, options) {
+  options = options || {};
+  options.headers = options.headers || {};
+  if (GS_TOKEN) options.headers['Authorization'] = 'Bearer ' + GS_TOKEN;
+  options.headers['Content-Type'] = options.headers['Content-Type'] || 'application/json';
+  var res = await fetch(API_BASE + endpoint, options);
+  return res.json();
+}
+
+// Load real stats into KPI cards
+async function loadStats() {
+  try {
+    var data = await apiCall('/api/stats');
+    if (!data.success) return;
+    var s = data.stats;
+    // Update KPI numbers if elements exist
+    var map = {
+      'kpi-clients':   s.clients,
+      'kpi-tasks':     s.tasks,
+      'kpi-overdue':   s.overdue,
+      'kpi-revenue':   '\u20b9' + (s.revenue/100000).toFixed(1) + 'L',
+      'kpi-inquiries': s.inquiries
+    };
+    Object.keys(map).forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el) el.textContent = map[id];
+    });
+  } catch(e) { console.log('Stats load failed:', e.message); }
 }
 
 function buildNav(role) {
@@ -1446,6 +1523,9 @@ function showPage(id) {
 }
 
 function doLogout() {
+  localStorage.removeItem('gs_token');
+  localStorage.removeItem('gs_user');
+  GS_TOKEN = null; GS_USER = null;
   document.getElementById("appShell").classList.remove("active");
   document.getElementById("loginScreen").style.display = "flex";
   document.getElementById("loginEmail").value = "";
