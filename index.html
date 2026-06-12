@@ -1,0 +1,1831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>GS Advisory | Tax · Finance · Compliance · Advisory</title>
+<meta property="og:title" content="GS Advisory | Tax · Finance · Compliance · Advisory"/>
+<meta property="og:description" content="Premier financial and tax advisory firm for UAE and India businesses. Be Wise, Take Our Advice."/>
+<meta property="og:url" content="https://gsadvisory.in"/>
+<meta property="og:type" content="website"/>
+<meta name="robots" content="index, follow"/>
+<meta name="keywords" content="tax advisory UAE, CA firm Dubai, GST filing India, Virtual CFO, accounting services, GS Advisory"/>
+<link rel="canonical" href="https://gsadvisory.in"/>
+<meta name="description" content="GS Advisory is a premier financial and tax advisory firm delivering audit, compliance, tax, and management consulting services globally."/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+<style>
+  :root {
+    --navy: #0d1b2a;
+    --navy-mid: #1b2e3c;
+    --blue: #0f7b6c;
+    --blue-light: #17a990;
+    --gold: #c8a951;
+    --gold-light: #ddb96a;
+    --gold-dark: #9a6e1f;
+    --white: #ffffff;
+    --off-white: #f8f9fc;
+    --gray-50: #f1f5f9;
+    --gray-100: #e2e8f0;
+    --gray-300: #94a3b8;
+    --gray-500: #64748b;
+    --gray-700: #334155;
+    --gray-900: #0f172a;
+    --font-display: 'Playfair Display', Georgia, serif;
+    --font-body: 'Inter', -apple-system, sans-serif;
+    --shadow-sm: 0 1px 3px rgba(13,27,42,0.08), 0 1px 2px rgba(13,27,42,0.05);
+    --shadow-md: 0 4px 16px rgba(13,27,42,0.10), 0 2px 6px rgba(13,27,42,0.06);
+    --shadow-lg: 0 12px 40px rgba(13,27,42,0.15);
+    --shadow-gold: 0 4px 20px rgba(201,168,76,0.25);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--font-body); color: var(--gray-700); background: var(--white); line-height: 1.6; overflow-x: hidden; }
+  a { text-decoration: none; color: inherit; }
+  img { max-width: 100%; display: block; }
+  ul { list-style: none; }
+
+  /* ─── TOP BAR ─── */
+  .topbar {
+    background: var(--navy);
+    padding: 8px 0;
+    font-size: 12.5px;
+    color: rgba(255,255,255,0.75);
+  }
+  .topbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .topbar a { color: rgba(255,255,255,0.75); transition: color .2s; }
+  .topbar a:hover { color: var(--gold-light); }
+  .topbar-left { display: flex; gap: 20px; align-items: center; }
+  .topbar-right { display: flex; gap: 16px; align-items: center; }
+  .topbar i { margin-right: 5px; color: var(--gold); font-size: 11px; }
+  .topbar-social { display: flex; gap: 10px; }
+  .topbar-social a {
+    width: 24px; height: 24px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px;
+    transition: background .2s, color .2s;
+  }
+  .topbar-social a:hover { background: var(--gold); color: var(--navy); }
+
+  /* ─── NAVBAR ─── */
+  .navbar {
+    position: sticky; top: 0; z-index: 1000;
+    background: var(--white);
+    box-shadow: 0 2px 20px rgba(13,27,42,0.10);
+    border-bottom: 3px solid var(--gold);
+  }
+  .navbar .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    height: 74px;
+  }
+  .logo-wrap { display: flex; align-items: center; gap: 12px; }
+  .logo-icon {
+    width: 52px; height: 52px;
+    background: var(--navy);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+  .logo-icon::after {
+    content: '';
+    position: absolute;
+    inset: 3px;
+    background: var(--navy-mid);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  }
+  .logo-letters {
+    position: relative; z-index: 2;
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: -0.5px;
+    line-height: 1;
+  }
+  .logo-text { display: flex; flex-direction: column; }
+  .logo-name {
+    font-family: var(--font-body);
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--navy);
+    letter-spacing: 1px;
+    line-height: 1.1;
+  }
+  .logo-name span { color: var(--blue); font-weight: 300; }
+  .logo-tagline {
+    font-size: 9.5px;
+    color: var(--gold-dark);
+    letter-spacing: 2px;
+    font-style: italic;
+    font-family: var(--font-display);
+    margin-top: 1px;
+  }
+
+  .nav-links { display: flex; align-items: center; gap: 4px; }
+  .nav-links > li { position: relative; }
+  .nav-links > li > a {
+    display: block;
+    padding: 10px 14px;
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--navy);
+    letter-spacing: 0.3px;
+    border-radius: 4px;
+    transition: color .2s, background .2s;
+    white-space: nowrap;
+  }
+  .nav-links > li > a:hover,
+  .nav-links > li > a.active { color: var(--blue); background: var(--gray-50); }
+  .nav-links > li > a i { font-size: 10px; margin-left: 4px; }
+
+  /* Dropdown */
+  .dropdown {
+    position: absolute; top: calc(100% + 6px); left: 0;
+    background: var(--white);
+    border: 1px solid var(--gray-100);
+    border-top: 3px solid var(--gold);
+    border-radius: 6px;
+    box-shadow: var(--shadow-lg);
+    min-width: 230px;
+    opacity: 0; visibility: hidden;
+    transform: translateY(-8px);
+    transition: all .25s ease;
+    z-index: 999;
+  }
+  .nav-links > li:hover .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+  .dropdown a {
+    display: block;
+    padding: 10px 18px;
+    font-size: 13px;
+    color: var(--gray-700);
+    border-bottom: 1px solid var(--gray-50);
+    transition: color .2s, padding .2s, background .2s;
+  }
+  .dropdown a:hover { color: var(--blue); background: var(--gray-50); padding-left: 24px; }
+  .dropdown a:last-child { border-bottom: none; }
+
+  .nav-cta {
+    background: var(--navy);
+    color: var(--white) !important;
+    padding: 10px 22px !important;
+    border-radius: 4px;
+    font-weight: 600 !important;
+    letter-spacing: 0.5px;
+    border: 2px solid var(--navy);
+    transition: all .2s !important;
+  }
+  .nav-cta:hover { background: var(--gold) !important; color: var(--navy) !important; border-color: var(--gold) !important; }
+
+  /* ─── CONTAINER ─── */
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+  /* ─── HERO ─── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    background: var(--navy);
+    display: flex; align-items: center;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 70% 50%, rgba(15,123,108,0.25) 0%, transparent 60%),
+      radial-gradient(ellipse at 10% 80%, rgba(201,168,76,0.10) 0%, transparent 50%),
+      linear-gradient(135deg, #0d1b2a 0%, #0d2257 50%, #0b1a42 100%);
+  }
+  .hero-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .hero-content {
+    position: relative; z-index: 2;
+    width: 100%;
+  }
+  .hero .container { display: flex; align-items: center; gap: 60px; padding: 100px 24px; }
+  .hero-left { flex: 1; max-width: 620px; }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(201,168,76,0.12);
+    border: 1px solid rgba(201,168,76,0.35);
+    color: var(--gold-light);
+    padding: 6px 16px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  .hero-badge i { font-size: 10px; }
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(36px, 5vw, 60px);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.15;
+    margin-bottom: 20px;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold-light);
+    display: block;
+  }
+  .hero-sub {
+    font-size: 16px;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.75;
+    margin-bottom: 36px;
+    max-width: 500px;
+  }
+  .hero-tagline {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 15px;
+    color: var(--gold-light);
+    margin-bottom: 36px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .hero-tagline::before {
+    content: '';
+    width: 30px; height: 2px;
+    background: var(--gold);
+  }
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--gold);
+    color: var(--navy);
+    padding: 14px 32px;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    transition: all .25s;
+    display: inline-flex; align-items: center; gap: 8px;
+    border: 2px solid var(--gold);
+  }
+  .btn-primary:hover { background: var(--gold-light); border-color: var(--gold-light); box-shadow: var(--shadow-gold); transform: translateY(-1px); }
+  .btn-outline {
+    background: transparent;
+    color: var(--white);
+    padding: 14px 32px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    border: 2px solid rgba(255,255,255,0.3);
+    transition: all .25s;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold-light); }
+
+  .hero-right {
+    flex: 0 0 340px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .hero-stat-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.10);
+    border-left: 4px solid var(--gold);
+    border-radius: 8px;
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    backdrop-filter: blur(8px);
+    transition: all .25s;
+  }
+  .hero-stat-card:hover { background: rgba(255,255,255,0.08); transform: translateX(4px); }
+  .stat-icon {
+    width: 48px; height: 48px;
+    background: rgba(201,168,76,0.15);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--gold);
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .stat-num { font-size: 28px; font-weight: 800; color: var(--white); font-family: var(--font-display); line-height: 1; }
+  .stat-label { font-size: 12px; color: rgba(255,255,255,0.55); margin-top: 3px; letter-spacing: 0.5px; }
+
+  /* ─── SECTION BASE ─── */
+  section { padding: 90px 0; }
+  .section-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold-dark);
+    margin-bottom: 14px;
+  }
+  .section-eyebrow::before { content: ''; width: 24px; height: 2px; background: var(--gold); }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 3.5vw, 42px);
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+  .section-title em { font-style: italic; color: var(--blue); }
+  .section-desc {
+    font-size: 15px;
+    color: var(--gray-500);
+    line-height: 1.8;
+    max-width: 560px;
+  }
+  .divider-gold {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light));
+    border-radius: 2px;
+    margin: 18px 0;
+  }
+
+  /* ─── ABOUT ─── */
+  .about { background: var(--white); }
+  .about .container { display: flex; gap: 72px; align-items: center; }
+  .about-img-wrap {
+    flex: 0 0 460px;
+    position: relative;
+  }
+  .about-img-main {
+    width: 100%;
+    border-radius: 4px;
+    height: 480px;
+    object-fit: cover;
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  .about-img-placeholder {
+    width: 100%;
+    height: 480px;
+    background: linear-gradient(135deg, #0d1b2a 0%, #1b2e3c 60%, #0f7b6c 100%);
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    color: rgba(255,255,255,0.5);
+    font-size: 13px;
+    letter-spacing: 2px;
+    position: relative;
+    overflow: hidden;
+  }
+  .about-img-placeholder i { font-size: 48px; color: rgba(201,168,76,0.4); }
+  .about-img-placeholder::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(circle at 30% 70%, rgba(15,123,108,0.3), transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(201,168,76,0.15), transparent 50%);
+  }
+  .about-badge {
+    position: absolute;
+    bottom: -20px; right: -20px;
+    background: var(--gold);
+    color: var(--navy);
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    box-shadow: var(--shadow-gold);
+    font-family: var(--font-display);
+  }
+  .about-badge-num { font-size: 36px; font-weight: 700; line-height: 1; }
+  .about-badge-label { font-size: 10px; font-weight: 600; letter-spacing: 1px; text-align: center; }
+
+  .about-content { flex: 1; }
+  .about-points { margin: 28px 0; display: flex; flex-direction: column; gap: 16px; }
+  .about-point {
+    display: flex; gap: 14px; align-items: flex-start;
+    padding: 16px 20px;
+    border: 1px solid var(--gray-100);
+    border-left: 4px solid var(--gold);
+    border-radius: 4px;
+    transition: box-shadow .2s, transform .2s;
+  }
+  .about-point:hover { box-shadow: var(--shadow-md); transform: translateX(4px); }
+  .about-point-icon { color: var(--blue); font-size: 16px; margin-top: 2px; flex-shrink: 0; }
+  .about-point-title { font-weight: 600; color: var(--navy); font-size: 14px; margin-bottom: 3px; }
+  .about-point-desc { font-size: 13px; color: var(--gray-500); line-height: 1.6; }
+
+  /* ─── STATS BAR ─── */
+  .stats-bar { background: var(--navy); padding: 56px 0; }
+  .stats-bar .container { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
+  .stat-item {
+    text-align: center;
+    padding: 20px;
+    border-right: 1px solid rgba(255,255,255,0.08);
+  }
+  .stat-item:last-child { border-right: none; }
+  .stat-item-num {
+    font-family: var(--font-display);
+    font-size: 50px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1;
+    display: flex; align-items: baseline; justify-content: center; gap: 2px;
+  }
+  .stat-item-num sup { font-size: 24px; color: var(--gold); }
+  .stat-item-label { font-size: 12px; color: rgba(255,255,255,0.5); letter-spacing: 2px; text-transform: uppercase; margin-top: 8px; }
+  .stat-item-sublabel { font-size: 11px; color: var(--gold); margin-top: 4px; font-style: italic; font-family: var(--font-display); }
+
+  /* ─── SERVICES ─── */
+  .services { background: var(--off-white); }
+  .services-header { text-align: center; margin-bottom: 56px; }
+  .services-header .section-desc { margin: 0 auto; }
+  .services-header .divider-gold { margin: 18px auto; }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .service-card {
+    background: var(--white);
+    border-radius: 6px;
+    padding: 36px 28px;
+    border: 1px solid var(--gray-100);
+    border-top: 4px solid transparent;
+    transition: all .3s ease;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .service-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 4px;
+    background: linear-gradient(90deg, var(--navy), var(--blue));
+    transform: scaleX(0); transform-origin: left;
+    transition: transform .3s ease;
+  }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); border-color: transparent; }
+  .service-card-icon {
+    width: 56px; height: 56px;
+    background: linear-gradient(135deg, var(--navy), var(--navy-mid));
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--gold);
+    font-size: 22px;
+    margin-bottom: 22px;
+    transition: transform .3s;
+  }
+  .service-card:hover .service-card-icon { transform: scale(1.08); }
+  .service-card h3 {
+    font-family: var(--font-display);
+    font-size: 19px;
+    color: var(--navy);
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+  .service-card p { font-size: 13.5px; color: var(--gray-500); line-height: 1.75; margin-bottom: 20px; }
+  .service-link {
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--blue);
+    letter-spacing: 0.5px;
+    display: inline-flex; align-items: center; gap: 6px;
+    transition: gap .2s;
+  }
+  .service-link:hover { gap: 10px; }
+
+  /* ─── APPROACH ─── */
+  .approach { background: var(--white); }
+  .approach .container { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+  .approach-content {}
+  .approach-steps { margin-top: 40px; display: flex; flex-direction: column; gap: 0; }
+  .approach-step {
+    display: flex;
+    gap: 24px;
+    padding: 24px 0;
+    border-bottom: 1px solid var(--gray-100);
+    transition: all .2s;
+  }
+  .approach-step:last-child { border-bottom: none; }
+  .approach-step:hover .step-num { background: var(--navy); color: var(--gold); }
+  .step-num {
+    width: 44px; height: 44px; flex-shrink: 0;
+    background: var(--gray-50);
+    border: 2px solid var(--gray-100);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; font-weight: 800;
+    color: var(--navy);
+    font-family: var(--font-display);
+    transition: all .25s;
+  }
+  .step-body {}
+  .step-body h4 { font-weight: 700; color: var(--navy); font-size: 15px; margin-bottom: 6px; }
+  .step-body p { font-size: 13.5px; color: var(--gray-500); line-height: 1.7; }
+
+  .approach-visual {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 70%, var(--blue) 100%);
+    border-radius: 8px;
+    padding: 48px;
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+  }
+  .approach-visual::before {
+    content: '';
+    position: absolute; top: -40px; right: -40px;
+    width: 200px; height: 200px;
+    background: rgba(201,168,76,0.08);
+    border-radius: 50%;
+  }
+  .approach-visual::after {
+    content: '';
+    position: absolute; bottom: -60px; left: -20px;
+    width: 150px; height: 150px;
+    background: rgba(15,123,108,0.15);
+    border-radius: 50%;
+  }
+  .approach-visual h3 {
+    font-family: var(--font-display);
+    font-size: 28px;
+    color: var(--white);
+    line-height: 1.3;
+    margin-bottom: 20px;
+    position: relative; z-index: 1;
+  }
+  .approach-visual h3 em { color: var(--gold-light); font-style: italic; }
+  .approach-tagline {
+    font-style: italic;
+    font-family: var(--font-display);
+    font-size: 15px;
+    color: rgba(255,255,255,0.65);
+    position: relative; z-index: 1;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    margin-top: 24px;
+  }
+  .approach-features {
+    display: flex; flex-direction: column; gap: 12px;
+    position: relative; z-index: 1;
+    margin-top: 28px;
+  }
+  .approach-feature {
+    display: flex; align-items: center; gap: 12px;
+    font-size: 14px; color: rgba(255,255,255,0.8);
+  }
+  .approach-feature i { color: var(--gold); width: 16px; }
+
+  /* ─── WHY US ─── */
+  .why-us { background: var(--off-white); }
+  .why-us .container { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+  .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .why-card {
+    background: var(--white);
+    padding: 24px;
+    border-radius: 6px;
+    border: 1px solid var(--gray-100);
+    transition: all .25s;
+  }
+  .why-card:hover { box-shadow: var(--shadow-md); border-color: var(--gold); }
+  .why-card-icon { color: var(--gold); font-size: 22px; margin-bottom: 12px; }
+  .why-card h4 { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+  .why-card p { font-size: 12.5px; color: var(--gray-500); line-height: 1.65; }
+
+  /* ─── TESTIMONIALS ─── */
+  .testimonials { background: var(--navy); padding: 90px 0; }
+  .testimonials .section-eyebrow { color: var(--gold-light); }
+  .testimonials .section-eyebrow::before { background: var(--gold); }
+  .testimonials .section-title { color: var(--white); }
+  .testimonials-header { text-align: center; margin-bottom: 56px; }
+  .testimonials-header .divider-gold { margin: 18px auto; }
+  .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .testi-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 6px;
+    padding: 32px;
+    transition: all .25s;
+    position: relative;
+  }
+  .testi-card:hover { background: rgba(255,255,255,0.07); transform: translateY(-3px); }
+  .testi-quote {
+    font-size: 42px;
+    color: var(--gold);
+    line-height: 1;
+    font-family: var(--font-display);
+    margin-bottom: 14px;
+    opacity: 0.6;
+  }
+  .testi-card p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.70);
+    line-height: 1.8;
+    font-style: italic;
+    font-family: var(--font-display);
+    margin-bottom: 24px;
+  }
+  .testi-stars { color: var(--gold); font-size: 12px; margin-bottom: 14px; letter-spacing: 2px; }
+  .testi-author { display: flex; align-items: center; gap: 12px; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 16px; }
+  .testi-avatar {
+    width: 42px; height: 42px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--blue), var(--navy-mid));
+    display: flex; align-items: center; justify-content: center;
+    color: var(--white); font-weight: 700; font-size: 14px;
+    flex-shrink: 0;
+  }
+  .testi-name { font-weight: 600; font-size: 14px; color: var(--white); }
+  .testi-role { font-size: 11.5px; color: var(--gold); margin-top: 2px; }
+
+  /* ─── CONTACT ─── */
+  .contact { background: var(--white); }
+  .contact .container { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; }
+  .contact-info { display: flex; flex-direction: column; gap: 24px; margin-top: 36px; }
+  .contact-item {
+    display: flex; gap: 16px; align-items: flex-start;
+    padding: 20px;
+    border: 1px solid var(--gray-100);
+    border-left: 4px solid var(--gold);
+    border-radius: 4px;
+    transition: box-shadow .2s;
+  }
+  .contact-item:hover { box-shadow: var(--shadow-md); }
+  .contact-item-icon {
+    width: 40px; height: 40px;
+    background: var(--navy);
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--gold); font-size: 15px; flex-shrink: 0;
+  }
+  .contact-item-title { font-weight: 700; font-size: 13px; color: var(--navy); margin-bottom: 4px; letter-spacing: 0.5px; }
+  .contact-item-value { font-size: 13.5px; color: var(--gray-500); line-height: 1.6; }
+
+  .contact-form { margin-top: 36px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  .form-group { margin-bottom: 16px; }
+  .form-group label { display: block; font-size: 12px; font-weight: 600; color: var(--navy); margin-bottom: 6px; letter-spacing: 0.5px; text-transform: uppercase; }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1.5px solid var(--gray-100);
+    border-radius: 4px;
+    font-size: 14px;
+    font-family: var(--font-body);
+    color: var(--gray-700);
+    background: var(--white);
+    outline: none;
+    transition: border-color .2s, box-shadow .2s;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px rgba(15,123,108,0.08);
+  }
+  .form-group textarea { resize: vertical; min-height: 120px; }
+  .form-submit {
+    background: var(--navy);
+    color: var(--white);
+    padding: 14px 36px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: all .25s;
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: var(--font-body);
+  }
+  .form-submit:hover { background: var(--gold); color: var(--navy); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--gray-900);
+    padding: 72px 0 0;
+    color: rgba(255,255,255,0.65);
+  }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 48px; }
+  .footer-brand .logo-name { color: var(--white); margin-bottom: 14px; display: block; font-family: var(--font-body); font-size: 20px; font-weight: 800; letter-spacing: 1px; }
+  .footer-brand .logo-name span { color: var(--blue-light); }
+  .footer-brand p { font-size: 13px; line-height: 1.8; margin-bottom: 20px; }
+  .footer-tagline-text { font-family: var(--font-display); font-style: italic; font-size: 13px; color: var(--gold); }
+  .footer-social { display: flex; gap: 10px; margin-top: 20px; }
+  .footer-social a {
+    width: 36px; height: 36px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px;
+    transition: all .2s;
+  }
+  .footer-social a:hover { background: var(--gold); color: var(--navy); border-color: var(--gold); }
+  .footer-col h4 {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--gold);
+    display: inline-block;
+  }
+  .footer-col ul { display: flex; flex-direction: column; gap: 9px; }
+  .footer-col ul li a {
+    font-size: 13px;
+    color: rgba(255,255,255,0.55);
+    transition: color .2s, padding .2s;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .footer-col ul li a i { font-size: 9px; color: var(--gold); opacity: 0.7; }
+  .footer-col ul li a:hover { color: var(--gold-light); padding-left: 4px; }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12.5px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .footer-bottom a { color: var(--gold); }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 1024px) {
+    .hero .container { flex-direction: column; padding: 80px 24px; gap: 48px; }
+    .hero-right { flex: none; width: 100%; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .hero-stat-card { border-left: none; border-top: 4px solid var(--gold); }
+    .about .container, .approach .container, .why-us .container, .contact .container { grid-template-columns: 1fr; gap: 48px; }
+    .about-img-wrap { flex: none; }
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+    .stats-bar .container { grid-template-columns: repeat(2, 1fr); }
+    .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  }
+  @media (max-width: 768px) {
+    .topbar-left { display: none; }
+    .nav-links { display: none; }
+    .services-grid { grid-template-columns: 1fr; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .why-grid { grid-template-columns: 1fr; }
+    section { padding: 64px 0; }
+    .hero-right { grid-template-columns: 1fr; }
+  }
+
+  /* ─── SCROLL ANIMATION ─── */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity .6s ease, transform .6s ease;
+  }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+  .fade-up:nth-child(2) { transition-delay: .1s; }
+  .fade-up:nth-child(3) { transition-delay: .2s; }
+  .fade-up:nth-child(4) { transition-delay: .3s; }
+
+  /* ─── COUNTER ─── */
+  .count-num { display: inline-block; }
+
+  /* LOGIN MODAL */
+  .modal-overlay {
+    position: fixed; inset: 0; z-index: 9999;
+    background: rgba(13,27,42,0.65);
+    backdrop-filter: blur(4px);
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; visibility: hidden;
+    transition: all .3s;
+  }
+  .modal-overlay.active { opacity: 1; visibility: visible; }
+  .modal-box {
+    background: #fff;
+    border-radius: 10px;
+    width: 100%; max-width: 420px;
+    padding: 44px 40px;
+    box-shadow: 0 24px 80px rgba(13,27,42,0.25);
+    position: relative;
+    transform: translateY(20px);
+    transition: transform .3s;
+  }
+  .modal-overlay.active .modal-box { transform: translateY(0); }
+  .modal-close {
+    position: absolute; top: 16px; right: 18px;
+    background: none; border: none; cursor: pointer;
+    font-size: 20px; color: #94a3b8;
+    transition: color .2s;
+  }
+  .modal-close:hover { color: #0d1b2a; }
+  .modal-logo { text-align: center; margin-bottom: 28px; }
+  .modal-hex {
+    width: 56px; height: 56px;
+    background: #0d1b2a;
+    clip-path: polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);
+    display: inline-flex; align-items: center; justify-content: center;
+    color: #c8a951; font-family: 'Playfair Display',serif; font-size: 18px; font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .modal-logo h3 { font-family: 'Playfair Display',serif; font-size: 22px; color: #0d1b2a; margin-bottom: 4px; }
+  .modal-logo p { font-size: 12px; color: #94a3b8; letter-spacing: 1px; font-style: italic; }
+  .modal-divider { height: 1px; background: #e2e8f0; margin: 20px 0; }
+  .modal-form .form-group { margin-bottom: 16px; }
+  .modal-form label { display: block; font-size: 11.5px; font-weight: 700; color: #0d1b2a; margin-bottom: 6px; letter-spacing: 0.5px; text-transform: uppercase; }
+  .modal-form input {
+    width: 100%; padding: 12px 16px;
+    border: 1.5px solid #e2e8f0; border-radius: 4px;
+    font-size: 14px; font-family: 'Inter',sans-serif; color: #334155;
+    outline: none; transition: border-color .2s, box-shadow .2s;
+  }
+  .modal-form input:focus { border-color: #0f7b6c; box-shadow: 0 0 0 3px rgba(15,123,108,0.08); }
+  .modal-forgot { text-align: right; margin-top: -8px; margin-bottom: 16px; }
+  .modal-forgot a { font-size: 12px; color: #0f7b6c; }
+  .modal-btn {
+    width: 100%; padding: 13px;
+    background: #0d1b2a; color: #fff;
+    border: none; border-radius: 4px;
+    font-size: 14px; font-weight: 700; font-family: 'Inter',sans-serif;
+    cursor: pointer; letter-spacing: 0.5px;
+    transition: background .2s;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+  }
+  .modal-btn:hover { background: #c8a951; color: #0d1b2a; }
+  .modal-footer-note { text-align: center; font-size: 12px; color: #94a3b8; margin-top: 18px; }
+  .modal-footer-note a { color: #0f7b6c; font-weight: 600; }
+
+  /* UPDATES PANEL */
+  .updates-panel {
+    position: fixed; top: 0; right: -420px; z-index: 9998;
+    width: 400px; height: 100vh;
+    background: #fff;
+    box-shadow: -8px 0 40px rgba(13,27,42,0.15);
+    transition: right .35s cubic-bezier(.4,0,.2,1);
+    display: flex; flex-direction: column;
+  }
+  .updates-panel.active { right: 0; }
+  .updates-header {
+    background: #0d1b2a;
+    padding: 24px 28px;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-shrink: 0;
+  }
+  .updates-header h3 { color: #fff; font-family: 'Playfair Display',serif; font-size: 20px; display: flex; align-items: center; gap: 10px; }
+  .updates-header h3 i { color: #c8a951; }
+  .updates-close { background: none; border: none; color: rgba(255,255,255,0.6); font-size: 20px; cursor: pointer; transition: color .2s; }
+  .updates-close:hover { color: #c8a951; }
+  .updates-tabs { display: flex; border-bottom: 2px solid #e2e8f0; flex-shrink: 0; }
+  .updates-tab {
+    flex: 1; padding: 14px; text-align: center;
+    font-size: 12.5px; font-weight: 600; color: #64748b;
+    cursor: pointer; border-bottom: 3px solid transparent; margin-bottom: -2px;
+    transition: all .2s; letter-spacing: 0.5px;
+  }
+  .updates-tab.active { color: #0d1b2a; border-bottom-color: #c8a951; }
+  .updates-body { flex: 1; overflow-y: auto; padding: 20px 24px; }
+  .update-item {
+    display: flex; gap: 14px;
+    padding: 16px 0;
+    border-bottom: 1px solid #f1f5f9;
+  }
+  .update-item:last-child { border-bottom: none; }
+  .update-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; margin-top: 5px; }
+  .dot-blue { background: #0f7b6c; }
+  .dot-gold { background: #c8a951; }
+  .dot-green { background: #22c55e; }
+  .dot-red { background: #ef4444; }
+  .update-title { font-size: 13.5px; font-weight: 600; color: #0d1b2a; margin-bottom: 4px; line-height: 1.4; }
+  .update-desc { font-size: 12.5px; color: #64748b; line-height: 1.6; }
+  .update-time { font-size: 11px; color: #94a3b8; margin-top: 5px; }
+  .update-tag {
+    display: inline-block; padding: 2px 8px;
+    border-radius: 100px; font-size: 10px; font-weight: 700;
+    letter-spacing: 0.5px; margin-bottom: 6px;
+  }
+  .tag-tax { background: rgba(15,123,108,0.08); color: #0f7b6c; }
+  .tag-gst { background: rgba(201,168,76,0.12); color: #9a6e1f; }
+  .tag-corp { background: rgba(34,197,94,0.1); color: #16a34a; }
+  .tag-uae { background: rgba(239,68,68,0.08); color: #dc2626; }
+  .updates-footer { padding: 16px 24px; border-top: 1px solid #e2e8f0; flex-shrink: 0; }
+  .updates-footer a {
+    display: block; text-align: center;
+    padding: 11px; background: #0d1b2a; color: #fff;
+    border-radius: 4px; font-size: 13px; font-weight: 600;
+    transition: background .2s;
+  }
+  .updates-footer a:hover { background: #c8a951; color: #0d1b2a; }
+  .panel-overlay {
+    position: fixed; inset: 0; z-index: 9997;
+    background: rgba(13,27,42,0.3);
+    backdrop-filter: blur(2px);
+    opacity: 0; visibility: hidden;
+    transition: all .3s;
+  }
+  .panel-overlay.active { opacity: 1; visibility: visible; }
+  .nav-updates {
+    background: transparent;
+    color: #0d1b2a !important;
+    padding: 10px 16px !important;
+    border-radius: 4px;
+    font-weight: 600 !important;
+    font-size: 13.5px;
+    display: inline-flex !important;
+    align-items: center;
+    gap: 6px;
+    position: relative;
+  }
+  .nav-updates .badge {
+    background: #ef4444;
+    color: #fff;
+    font-size: 9px;
+    font-weight: 700;
+    padding: 1px 5px;
+    border-radius: 100px;
+    position: absolute;
+    top: 4px; right: 0px;
+    animation: pulse-badge 2s infinite;
+  }
+  @keyframes pulse-badge {
+    0%,100% { transform:scale(1); }
+    50% { transform:scale(1.2); }
+  }
+  .nav-login {
+    background: #c8a951 !important;
+    color: #0d1b2a !important;
+    padding: 10px 20px !important;
+    border-radius: 4px;
+    font-weight: 700 !important;
+    border: 2px solid #c8a951;
+    transition: all .2s !important;
+    display: inline-flex !important;
+    align-items: center;
+    gap: 7px;
+  }
+  .nav-login:hover { background: #9a6e1f !important; border-color: #9a6e1f !important; color: #fff !important; }
+
+
+  /* ══ WEBSITE PREMIUM VISUAL UPGRADES ══ */
+
+  /* Update CSS variable overrides for website */
+  :root {
+    --navy: #0d1b2a;
+    --navy-mid: #1b2e3c;
+    --blue: #0f7b6c;
+    --blue-light: #17a990;
+    --gold: #c8a951;
+    --gold-light: #ddb96a;
+    --gold-dark: #9a6e1f;
+  }
+
+  /* Topbar */
+  .topbar { background: linear-gradient(90deg, #0d1b2a, #0a2218); }
+
+  /* Navbar border */
+  .navbar { border-bottom: 3px solid #c8a951; box-shadow: 0 2px 20px rgba(13,27,42,0.10); }
+  .logo-tagline { color: #9a6e1f; }
+
+  /* Hero — richer dark */
+  .hero-bg {
+    background:
+      radial-gradient(ellipse at 70% 50%, rgba(15,123,108,0.2) 0%, transparent 60%),
+      radial-gradient(ellipse at 10% 80%, rgba(200,169,81,0.08) 0%, transparent 50%),
+      linear-gradient(135deg, #0d1b2a 0%, #0e2535 50%, #0a2218 100%);
+  }
+
+  /* Hero stat cards */
+  .hero-stat-card { border-left: 4px solid #c8a951; }
+  .hero-stat-card:hover { background: rgba(255,255,255,0.08); }
+
+  /* Buttons */
+  .btn-primary { background: #c8a951; border-color: #c8a951; color: #0d1b2a; }
+  .btn-primary:hover { background: #ddb96a; border-color: #ddb96a; }
+
+  /* About points */
+  .about-point { border-left: 4px solid #c8a951; }
+  .about-point-icon { color: #0f7b6c; }
+  .about-badge { background: linear-gradient(135deg, #c8a951, #ddb96a); }
+
+  /* Stats bar */
+  .stats-bar { background: linear-gradient(135deg, #0d1b2a 0%, #0a2218 50%, #0e1f35 100%); }
+
+  /* Services */
+  .services { background: #f0f4f2; }
+  .service-card::before { background: linear-gradient(90deg, #0d1b2a, #0f7b6c); }
+  .service-card-icon { background: linear-gradient(135deg, #0d1b2a, #1b2e3c); color: #c8a951; }
+  .service-card-icon { border-radius: 12px; }
+  .service-link { color: #0f7b6c; }
+
+  /* Approach visual box */
+  .approach-visual {
+    background: linear-gradient(135deg, #0d1b2a 0%, #1b2e3c 60%, #0f7b6c 100%);
+  }
+
+  /* Why us cards */
+  .why-us { background: #f8faf9; }
+  .why-card:hover { border-color: #c8a951; box-shadow: 0 6px 20px rgba(200,169,81,0.12); }
+  .why-card-icon { color: #c8a951; }
+
+  /* Testimonials */
+  .testimonials { background: linear-gradient(135deg, #0d1b2a 0%, #0a2218 50%, #0e1f35 100%); }
+
+  /* Contact items */
+  .contact-item { border-left: 4px solid #c8a951; }
+  .contact-item-icon { background: linear-gradient(135deg, #0d1b2a, #0f7b6c); }
+  .form-submit { background: linear-gradient(135deg, #0d1b2a, #0f7b6c); }
+  .form-submit:hover { background: linear-gradient(135deg, #c8a951, #ddb96a); color: #0d1b2a; }
+
+  /* Nav CTA */
+  .nav-cta { background: linear-gradient(135deg, #0d1b2a, #0f7b6c) !important; border-color: #0f7b6c !important; }
+  .nav-cta:hover { background: linear-gradient(135deg, #c8a951, #ddb96a) !important; color: #0d1b2a !important; border-color: #c8a951 !important; }
+  .nav-login { background: linear-gradient(135deg, #c8a951, #ddb96a) !important; border-color: #c8a951 !important; }
+  .nav-login:hover { background: linear-gradient(135deg, #0d1b2a, #0f7b6c) !important; color: #fff !important; border-color: #0d1b2a !important; }
+
+  /* Footer */
+  footer { background: linear-gradient(180deg, #0a1520 0%, #06100d 100%); }
+  .footer-col h4 { border-bottom-color: #c8a951; }
+  .footer-social a:hover { background: #c8a951; color: #0d1b2a; }
+
+  /* Updates panel header */
+  .updates-header { background: linear-gradient(135deg, #0d1b2a, #0a2218); }
+  .updates-tab.active { color: #0d1b2a; border-bottom-color: #c8a951; }
+  .modal-hex { background: linear-gradient(135deg, #0d1b2a, #0f7b6c); }
+  .modal-btn { background: linear-gradient(135deg, #0d1b2a, #0f7b6c); }
+  .modal-btn:hover { background: linear-gradient(135deg, #c8a951, #ddb96a); color: #0d1b2a; }
+
+  /* Section eyebrow */
+  .section-eyebrow { color: #9a6e1f; }
+  .section-eyebrow::before { background: #c8a951; }
+
+  /* Divider gold */
+  .divider-gold { background: linear-gradient(90deg, #c8a951, #ddb96a); }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: rgba(15,123,108,0.3); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(200,169,81,0.4); }
+
+  /* Service cards hover */
+  .service-card { border-radius: 10px; }
+  .service-card:hover { box-shadow: 0 16px 48px rgba(13,27,42,0.12); }
+
+  /* About image placeholder */
+  .about-img-placeholder {
+    background: linear-gradient(135deg, #0d1b2a 0%, #1b2e3c 50%, #0f7b6c 100%);
+  }
+
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-left">
+      <a href="tel:+971527251804"><i class="fas fa-phone"></i>+971 52 725 1804</a>
+      <a href="mailto:admin@gsadvisory.in"><i class="fas fa-envelope"></i>admin@gsadvisory.in</a>
+    </div>
+    <div class="topbar-right">
+      <span><i class="fas fa-map-marker-alt"></i>Dubai, UAE &nbsp;|&nbsp; Delhi, India</span>
+      <div class="topbar-social">
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="container">
+    <div class="logo-wrap">
+      <div class="logo-icon">
+        <span class="logo-letters">GS</span>
+      </div>
+      <div class="logo-text">
+        <span class="logo-name">GS <span>ADVISORY</span></span>
+        <span class="logo-tagline">Be Wise, Take Our Advice</span>
+      </div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#home" class="active">Home</a></li>
+      <li>
+        <a href="#about">About Us <i class="fas fa-chevron-down"></i></a>
+        <div class="dropdown">
+          <a href="#about"><i class="fas fa-angle-right"></i> Our Profile</a>
+          <a href="#about"><i class="fas fa-angle-right"></i> Our Team</a>
+          <a href="#why-us"><i class="fas fa-angle-right"></i> Why GS Advisory</a>
+        </div>
+      </li>
+      <li>
+        <a href="#services">Services <i class="fas fa-chevron-down"></i></a>
+        <div class="dropdown">
+          <a href="#services"><i class="fas fa-angle-right"></i> Tax & Regulatory</a>
+          <a href="#services"><i class="fas fa-angle-right"></i> Audit & Assurance</a>
+          <a href="#services"><i class="fas fa-angle-right"></i> Management Consulting</a>
+          <a href="#services"><i class="fas fa-angle-right"></i> Finance & Investment</a>
+          <a href="#services"><i class="fas fa-angle-right"></i> Compliance & BPO</a>
+          <a href="#services"><i class="fas fa-angle-right"></i> ESG & Sustainability</a>
+          <a href="#services"><i class="fas fa-angle-right"></i> Accounting Services</a>
+          <a href="#services"><i class="fas fa-angle-right"></i> Virtual CFO Services</a>
+          <a href="#services"><i class="fas fa-angle-right"></i> Cost Management</a>
+        </div>
+      </li>
+      <li>
+        <a href="#">Insights <i class="fas fa-chevron-down"></i></a>
+        <div class="dropdown">
+          <a href="#"><i class="fas fa-angle-right"></i> Blog & Articles</a>
+          <a href="#"><i class="fas fa-angle-right"></i> Publications</a>
+          <a href="#"><i class="fas fa-angle-right"></i> Tax Budget Updates</a>
+        </div>
+      </li>
+      <li><a href="#">Careers</a></li>
+      <li style="position:relative;"><a href="#" class="nav-updates" onclick="event.preventDefault();openUpdates()"><i class="fas fa-bell"></i> Updates<span class="badge">NEW</span></a></li>
+      <li><a href="#" class="nav-login" onclick="event.preventDefault();openLogin()"><i class="fas fa-user-circle"></i> Login</a></li>
+      <li><a href="#contact" class="nav-cta">Contact Us</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="container">
+      <div class="hero-left">
+        <div class="hero-badge"><i class="fas fa-star"></i> Trusted Advisory Firm</div>
+        <h1>
+          Your Growth,<br/>
+          <em>Our Expertise.</em>
+        </h1>
+        <p class="hero-sub">
+          GS Advisory delivers precision-driven tax, finance, and compliance solutions for businesses across the UAE, India, and beyond. We don't just advise — we partner in your success.
+        </p>
+        <p class="hero-tagline">Be Wise, Take Our Advice</p>
+        <div class="hero-btns">
+          <a href="#services" class="btn-primary"><i class="fas fa-arrow-right"></i> Explore Services</a>
+          <a href="#contact" class="btn-outline"><i class="fas fa-phone-alt"></i> Schedule a Consultation</a>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="hero-stat-card fade-up">
+          <div class="stat-icon"><i class="fas fa-briefcase"></i></div>
+          <div>
+            <div class="stat-num count-num" data-target="5">0</div>
+            <div class="stat-label">Years of Excellence</div>
+          </div>
+        </div>
+        <div class="hero-stat-card fade-up">
+          <div class="stat-icon"><i class="fas fa-users"></i></div>
+          <div>
+            <div class="stat-num count-num" data-target="100">0</div>
+            <div class="stat-label">+ Satisfied Clients</div>
+          </div>
+        </div>
+        <div class="hero-stat-card fade-up">
+          <div class="stat-icon"><i class="fas fa-globe"></i></div>
+          <div>
+            <div class="stat-num count-num" data-target="30">0</div>
+            <div class="stat-label">+ Industries Served</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-img-wrap">
+      <div class="about-img-placeholder">
+        <i class="fas fa-balance-scale"></i>
+        <span style="position:relative;z-index:1;">GS ADVISORY</span>
+      </div>
+      <div class="about-badge">
+        <span class="about-badge-num">5</span>
+        <span class="about-badge-label">Years of Trust</span>
+      </div>
+    </div>
+    <div class="about-content">
+      <div class="section-eyebrow">Who We Are</div>
+      <h2 class="section-title">Built on Integrity,<br/><em>Driven by Results</em></h2>
+      <div class="divider-gold"></div>
+      <p class="section-desc">
+        Founded with a mission to simplify financial complexity, <strong>GS Advisory</strong> is a premier firm offering expert guidance in taxation, audit, compliance, accounting, and strategic advisory. We serve clients across the UAE, India, and the Middle East with precision, confidentiality, and measurable outcomes.
+      </p>
+      <p class="section-desc" style="margin-top:14px;">
+        We are more than service providers — we are your trusted partners in financial growth. With a dedicated team of qualified professionals, we bring global knowledge with local expertise to every engagement.
+      </p>
+      <div class="about-points">
+        <div class="about-point fade-up">
+          <i class="fas fa-check-circle about-point-icon"></i>
+          <div>
+            <div class="about-point-title">Confidentiality & Ethics at Core</div>
+            <div class="about-point-desc">Every engagement is handled with absolute discretion and in strict compliance with professional standards.</div>
+          </div>
+        </div>
+        <div class="about-point fade-up">
+          <i class="fas fa-chart-line about-point-icon"></i>
+          <div>
+            <div class="about-point-title">Practical, Results-Driven Solutions</div>
+            <div class="about-point-desc">We don't deliver theory — we deliver outcomes tailored to your business environment and goals.</div>
+          </div>
+        </div>
+        <div class="about-point fade-up">
+          <i class="fas fa-globe about-point-icon"></i>
+          <div>
+            <div class="about-point-title">UAE & India Cross-Border Expertise</div>
+            <div class="about-point-desc">Specialised knowledge of both UAE and Indian regulatory frameworks makes us uniquely positioned for NRI and cross-border businesses.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="container">
+    <div class="stat-item">
+      <div class="stat-item-num"><span class="count-num" data-target="100">0</span><sup>+</sup></div>
+      <div class="stat-item-label">Trusted Clients</div>
+      <div class="stat-item-sublabel">Across industries</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-item-num"><span class="count-num" data-target="30">0</span><sup>+</sup></div>
+      <div class="stat-item-label">Industries</div>
+      <div class="stat-item-sublabel">Deep sector knowledge</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-item-num"><span class="count-num" data-target="5">0</span><sup>+</sup></div>
+      <div class="stat-item-label">Years Experience</div>
+      <div class="stat-item-sublabel">Proven track record</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-item-num"><span class="count-num" data-target="50">0</span><sup>+</sup></div>
+      <div class="stat-item-label">Team Strength</div>
+      <div class="stat-item-sublabel">Expert professionals</div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="container">
+    <div class="services-header">
+      <div class="section-eyebrow">What We Do</div>
+      <h2 class="section-title">One Firm, <em>Many Solutions</em></h2>
+      <div class="divider-gold"></div>
+      <p class="section-desc">Comprehensive financial and advisory services crafted for businesses at every stage — from startups to established enterprises.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card fade-up">
+        <div class="service-card-icon"><i class="fas fa-search-dollar"></i></div>
+        <h3>Tax & Regulatory Compliance</h3>
+        <p>Simplifying complex UAE and India tax obligations — VAT, corporate tax, GST, TDS — with precision filing, optimization strategies, and zero-penalty compliance.</p>
+        <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-card-icon"><i class="fas fa-file-invoice"></i></div>
+        <h3>Audit & Assurance</h3>
+        <p>Delivering credible, accurate financial reporting. Our audit team brings independent insight to your financial statements, internal controls, and risk environment.</p>
+        <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-card-icon"><i class="fas fa-chess"></i></div>
+        <h3>Management Consulting</h3>
+        <p>Strategic frameworks, performance optimization, and business transformation advisory to help your organisation run smarter and compete stronger.</p>
+        <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-card-icon"><i class="fas fa-hand-holding-usd"></i></div>
+        <h3>Finance & Investment Advisory</h3>
+        <p>End-to-end support for fundraising, valuations, business structuring, and capital strategy — unlocking long-term value for your enterprise.</p>
+        <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-card-icon"><i class="fas fa-cogs"></i></div>
+        <h3>Business Process Outsourcing</h3>
+        <p>Reliable outsourcing for accounting, payroll, compliance, and back-office operations. Focus on growth — we handle the rest with accuracy and speed.</p>
+        <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-card-icon"><i class="fas fa-leaf"></i></div>
+        <h3>ESG & Sustainability</h3>
+        <p>Helping businesses integrate responsible governance and sustainability reporting frameworks into their core strategy for long-term stakeholder value.</p>
+        <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-card-icon"><i class="fas fa-book-open"></i></div>
+        <h3>Accounting Services</h3>
+        <p>End-to-end bookkeeping, ledger maintenance, bank reconciliation, and financial statement preparation. Accurate accounts that keep your business audit-ready at all times.</p>
+        <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-card-icon"><i class="fas fa-user-tie"></i></div>
+        <h3>Virtual CFO Services</h3>
+        <p>Get senior-level financial leadership without the full-time cost. Our Virtual CFOs drive budgeting, cash flow planning, investor reporting, and strategic financial decisions for your business.</p>
+        <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-card-icon"><i class="fas fa-chart-pie"></i></div>
+        <h3>Cost Management Services</h3>
+        <p>Systematic cost analysis, overhead reduction strategies, and profitability improvement frameworks. We identify where your money is leaking and plug it — fast.</p>
+        <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPROACH -->
+<section class="approach" id="approach">
+  <div class="container">
+    <div class="approach-content">
+      <div class="section-eyebrow">How We Work</div>
+      <h2 class="section-title">Our Approach to<br/><em>Every Engagement</em></h2>
+      <div class="divider-gold"></div>
+      <p class="section-desc">A structured, client-first methodology that ensures consistent, measurable, and transparent outcomes at every stage.</p>
+      <div class="approach-steps">
+        <div class="approach-step">
+          <div class="step-num">01</div>
+          <div class="step-body">
+            <h4>Understanding Your Business</h4>
+            <p>We begin with a deep-dive consultation to understand your business context, risks, regulatory environment, and growth objectives before proposing any solution.</p>
+          </div>
+        </div>
+        <div class="approach-step">
+          <div class="step-num">02</div>
+          <div class="step-body">
+            <h4>Designing a Tailored Plan</h4>
+            <p>Our team translates your requirements into a precise, actionable engagement plan — structured, time-bound, and aligned to your goals.</p>
+          </div>
+        </div>
+        <div class="approach-step">
+          <div class="step-num">03</div>
+          <div class="step-body">
+            <h4>Transparent Execution</h4>
+            <p>We deliver with full transparency — keeping you informed at every stage, with clear communication and timely updates. No surprises.</p>
+          </div>
+        </div>
+        <div class="approach-step">
+          <div class="step-num">04</div>
+          <div class="step-body">
+            <h4>Consistent Quality Delivery</h4>
+            <p>Excellence is not a one-time affair. Our quality review process ensures every deliverable meets the highest professional standards, consistently.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="approach-visual">
+      <h3>A Unified Perspective to<br/><em>Stand and Deliver</em></h3>
+      <div class="approach-features">
+        <div class="approach-feature"><i class="fas fa-check"></i> Cross-border UAE & India expertise</div>
+        <div class="approach-feature"><i class="fas fa-check"></i> Dedicated client relationship managers</div>
+        <div class="approach-feature"><i class="fas fa-check"></i> Digitally-driven, paperless processes</div>
+        <div class="approach-feature"><i class="fas fa-check"></i> Strict confidentiality & data security</div>
+        <div class="approach-feature"><i class="fas fa-check"></i> Proactive — we alert before problems arise</div>
+        <div class="approach-feature"><i class="fas fa-check"></i> Fixed-fee transparency, no hidden charges</div>
+      </div>
+      <p class="approach-tagline">"We are there whenever required — and before you need us."</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why-us" id="why-us">
+  <div class="container">
+    <div>
+      <div class="section-eyebrow">Why Choose Us</div>
+      <h2 class="section-title">What Sets GS Advisory<br/><em>Apart</em></h2>
+      <div class="divider-gold"></div>
+      <p class="section-desc">
+        In a market crowded with generalist advisors, GS Advisory brings focused specialisation, cross-border depth, and a genuine commitment to client outcomes over billable hours.
+      </p>
+      <br/>
+      <a href="#contact" class="btn-primary" style="margin-top:8px;display:inline-flex;">Get a Free Consultation <i class="fas fa-arrow-right"></i></a>
+    </div>
+    <div class="why-grid">
+      <div class="why-card fade-up">
+        <div class="why-card-icon"><i class="fas fa-user-shield"></i></div>
+        <h4>Qualified Professionals</h4>
+        <p>Chartered Accountants, tax lawyers, and financial advisors — all under one roof.</p>
+      </div>
+      <div class="why-card fade-up">
+        <div class="why-card-icon"><i class="fas fa-globe-asia"></i></div>
+        <h4>UAE & India Dual Expertise</h4>
+        <p>Unmatched knowledge of both regulatory landscapes for NRI and cross-border clients.</p>
+      </div>
+      <div class="why-card fade-up">
+        <div class="why-card-icon"><i class="fas fa-clock"></i></div>
+        <h4>Deadline-Driven</h4>
+        <p>We treat your compliance deadlines as our own. Zero tolerance for late filings.</p>
+      </div>
+      <div class="why-card fade-up">
+        <div class="why-card-icon"><i class="fas fa-lock"></i></div>
+        <h4>Client Confidentiality</h4>
+        <p>Your business data is treated with highest professional secrecy standards.</p>
+      </div>
+      <div class="why-card fade-up">
+        <div class="why-card-icon"><i class="fas fa-comments"></i></div>
+        <h4>Responsive Communication</h4>
+        <p>Real people, real answers — not auto-responders. We respond within hours, not days.</p>
+      </div>
+      <div class="why-card fade-up">
+        <div class="why-card-icon"><i class="fas fa-tags"></i></div>
+        <h4>Transparent Pricing</h4>
+        <p>Fixed-fee engagements with no hidden charges. You always know what you pay for.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="container">
+    <div class="testimonials-header">
+      <div class="section-eyebrow">Client Voices</div>
+      <h2 class="section-title">What Our Clients Say</h2>
+      <div class="divider-gold"></div>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testi-card fade-up">
+        <div class="testi-quote">"</div>
+        <div class="testi-stars">★★★★★</div>
+        <p>GS Advisory transformed how we handle our UAE VAT and India GST filings. Their team is proactive, knowledgeable, and always available when we need guidance. Truly best-in-class advisory.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">RK</div>
+          <div>
+            <div class="testi-name">Rajesh Kumar</div>
+            <div class="testi-role">CFO, Construction Group — Dubai</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card fade-up">
+        <div class="testi-quote">"</div>
+        <div class="testi-stars">★★★★★</div>
+        <p>Their cross-border expertise saved us significant tax exposure during our India-UAE restructuring. The team understood every nuance of both regulatory frameworks without us having to explain twice.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">SM</div>
+          <div>
+            <div class="testi-name">Sunita Mehta</div>
+            <div class="testi-role">Managing Director, IT Services — Abu Dhabi</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card fade-up">
+        <div class="testi-quote">"</div>
+        <div class="testi-stars">★★★★★</div>
+        <p>What sets GS Advisory apart is their commitment. They don't just file returns — they actively look for optimisation opportunities. Our effective tax rate dropped by 18% in the first year.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">AP</div>
+          <div>
+            <div class="testi-name">Arun Pillai</div>
+            <div class="testi-role">Founder, Trading Company — Sharjah</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div>
+      <div class="section-eyebrow">Get In Touch</div>
+      <h2 class="section-title">Let's Talk About<br/><em>Your Business</em></h2>
+      <div class="divider-gold"></div>
+      <p class="section-desc">Whether you have a tax question, need an audit, or want to explore how we can partner with your business — reach out. First consultation is always free.</p>
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="contact-item-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <div>
+            <div class="contact-item-title">Our Offices</div>
+            <div class="contact-item-value">Dubai, UAE &nbsp;|&nbsp; Delhi, India<br/>Available for remote consultations globally</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon"><i class="fas fa-phone-alt"></i></div>
+          <div>
+            <div class="contact-item-title">Phone</div>
+            <div class="contact-item-value">+971 52 725 1804 (UAE)<br/>+91 99857 52173 (India)</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon"><i class="fas fa-envelope"></i></div>
+          <div>
+            <div class="contact-item-title">Email</div>
+            <div class="contact-item-value">admin@gsadvisory.in</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon"><i class="fas fa-clock"></i></div>
+          <div>
+            <div class="contact-item-title">Working Hours</div>
+            <div class="contact-item-value">Monday – Friday: 9:00 AM – 6:00 PM<br/>Saturday: 10:00 AM – 2:00 PM</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="section-eyebrow" style="margin-top:0;">Send a Message</div>
+      <h3 style="font-family:var(--font-display);font-size:24px;color:var(--navy);margin-bottom:8px;">Request a Free Consultation</h3>
+      <div class="contact-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Full Name *</label>
+            <input type="text" placeholder="Your full name"/>
+          </div>
+          <div class="form-group">
+            <label>Company Name</label>
+            <input type="text" placeholder="Your company (optional)"/>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Email Address *</label>
+            <input type="email" placeholder="your@email.com"/>
+          </div>
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="tel" placeholder="+971 / +91..."/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Service Required</label>
+          <select>
+            <option value="">Select a service...</option>
+            <option>Tax & Regulatory Compliance</option>
+            <option>Audit & Assurance</option>
+            <option>Management Consulting</option>
+            <option>Finance & Investment Advisory</option>
+            <option>Business Process Outsourcing</option>
+            <option>ESG & Sustainability</option>
+            <option>Accounting Services</option>
+            <option>Virtual CFO Services</option>
+            <option>Cost Management Services</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Your Message</label>
+          <textarea placeholder="Tell us briefly about your requirement..."></textarea>
+        </div>
+        <button class="form-submit"><i class="fas fa-paper-plane"></i> Send Message</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="logo-name">GS <span>ADVISORY</span></span>
+        <p>Your trusted partner for tax, finance, audit, and compliance across UAE and India. We bring global expertise with a personal touch to every client engagement.</p>
+        <div class="footer-tagline-text">Be Wise, Take Our Advice.</div>
+        <div class="footer-social">
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="#home"><i class="fas fa-angle-right"></i> Home</a></li>
+          <li><a href="#about"><i class="fas fa-angle-right"></i> About Us</a></li>
+          <li><a href="#services"><i class="fas fa-angle-right"></i> Services</a></li>
+          <li><a href="#approach"><i class="fas fa-angle-right"></i> Our Approach</a></li>
+          <li><a href="#testimonials"><i class="fas fa-angle-right"></i> Testimonials</a></li>
+          <li><a href="#contact"><i class="fas fa-angle-right"></i> Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#"><i class="fas fa-angle-right"></i> Tax & Regulatory</a></li>
+          <li><a href="#"><i class="fas fa-angle-right"></i> Audit & Assurance</a></li>
+          <li><a href="#"><i class="fas fa-angle-right"></i> Management Consulting</a></li>
+          <li><a href="#"><i class="fas fa-angle-right"></i> Finance Advisory</a></li>
+          <li><a href="#"><i class="fas fa-angle-right"></i> BPO Services</a></li>
+          <li><a href="#"><i class="fas fa-angle-right"></i> ESG & Sustainability</a></li>
+          <li><a href="#"><i class="fas fa-angle-right"></i> Accounting Services</a></li>
+          <li><a href="#"><i class="fas fa-angle-right"></i> Virtual CFO</a></li>
+          <li><a href="#"><i class="fas fa-angle-right"></i> Cost Management</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="#"><i class="fas fa-map-marker-alt"></i> Dubai, UAE</a></li>
+          <li><a href="#"><i class="fas fa-map-marker-alt"></i> Delhi, India</a></li>
+          <li><a href="tel:+971527251804"><i class="fas fa-phone"></i> +971 52 725 1804</a></li>
+          <li><a href="tel:+919985752173"><i class="fas fa-phone"></i> +91 99857 52173</a></li>
+          <li><a href="mailto:admin@gsadvisory.in"><i class="fas fa-envelope"></i> admin@gsadvisory.in</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 GS Advisory. All Rights Reserved.</span>
+      <span><a href="#">Privacy Policy</a> &nbsp;|&nbsp; <a href="#">Terms of Use</a> &nbsp;|&nbsp; <a href="#">Disclaimer</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Scroll animation
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // Counter animation
+  function animateCounter(el) {
+    const target = parseInt(el.dataset.target);
+    const duration = 2000;
+    const step = target / (duration / 16);
+    let current = 0;
+    const timer = setInterval(() => {
+      current += step;
+      if (current >= target) { current = target; clearInterval(timer); }
+      el.textContent = Math.floor(current);
+    }, 16);
+  }
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        animateCounter(e.target);
+        counterObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.count-num').forEach(el => counterObserver.observe(el));
+
+  // Smooth active link
+  const navLinks = document.querySelectorAll('.nav-links > li > a');
+  window.addEventListener('scroll', () => {
+    const scrollPos = window.scrollY + 100;
+    document.querySelectorAll('section[id], div[id]').forEach(section => {
+      if (section.offsetTop <= scrollPos && section.offsetTop + section.offsetHeight > scrollPos) {
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + section.id) link.classList.add('active');
+        });
+      }
+    });
+  });
+
+  function openLogin() { document.getElementById('loginModal').classList.add('active'); document.body.style.overflow='hidden'; }
+  function closeLogin() { document.getElementById('loginModal').classList.remove('active'); document.body.style.overflow=''; }
+  document.getElementById('loginModal').addEventListener('click', function(e){ if(e.target===this) closeLogin(); });
+  function openUpdates() {
+    document.getElementById('updatesPanel').classList.add('active');
+    document.getElementById('panelOverlay').classList.add('active');
+    document.body.style.overflow='hidden';
+  }
+  function closeUpdates() {
+    document.getElementById('updatesPanel').classList.remove('active');
+    document.getElementById('panelOverlay').classList.remove('active');
+    document.body.style.overflow='';
+  }
+  function switchTab(el, filter) {
+    document.querySelectorAll('.updates-tab').forEach(function(t){ t.classList.remove('active'); });
+    el.classList.add('active');
+    document.querySelectorAll('.update-item').forEach(function(item){
+      var cat = item.getAttribute('data-cat') || '';
+      item.style.display = (filter==='all' || cat.indexOf(filter)!==-1) ? 'flex' : 'none';
+    });
+  }
+
+</script>
+
+<div class="panel-overlay" id="panelOverlay" onclick="closeUpdates()"></div>
+
+<div class="modal-overlay" id="loginModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeLogin()"><i class="fas fa-times"></i></button>
+    <div class="modal-logo">
+      <div class="modal-hex">GS</div>
+      <h3>GS Advisory</h3>
+      <p>Be Wise, Take Our Advice</p>
+    </div>
+    <div class="modal-divider"></div>
+    <div class="modal-form">
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" placeholder="your@email.com"/>
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" placeholder="Enter your password"/>
+      </div>
+      <div class="modal-forgot"><a href="#">Forgot Password?</a></div>
+      <button class="modal-btn" onclick="window.open('gs_dashboard.html','_blank')"><i class="fas fa-sign-in-alt"></i> Sign In to Portal</button>
+    </div>
+    <p class="modal-footer-note">New client? <a href="#contact" onclick="closeLogin()">Request Access</a></p>
+  </div>
+</div>
+
+<div class="updates-panel" id="updatesPanel">
+  <div class="updates-header">
+    <h3><i class="fas fa-bell"></i> Latest Updates</h3>
+    <button class="updates-close" onclick="closeUpdates()"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="updates-tabs">
+    <div class="updates-tab active" onclick="switchTab(this,'all')">All</div>
+    <div class="updates-tab" onclick="switchTab(this,'uae')">UAE</div>
+    <div class="updates-tab" onclick="switchTab(this,'india')">India</div>
+    <div class="updates-tab" onclick="switchTab(this,'tax')">Tax</div>
+  </div>
+  <div class="updates-body" id="updatesBody">
+    <div class="update-item" data-cat="uae">
+      <div class="update-dot dot-red"></div>
+      <div>
+        <span class="update-tag tag-uae">UAE</span>
+        <div class="update-title">UAE Corporate Tax — Small Business Relief 2025</div>
+        <div class="update-desc">FTA revised the Small Business Relief threshold to AED 3 million for tax periods ending Dec 2025 onwards.</div>
+        <div class="update-time"><i class="fas fa-clock"></i> 2 hours ago</div>
+      </div>
+    </div>
+    <div class="update-item" data-cat="india">
+      <div class="update-dot dot-blue"></div>
+      <div>
+        <span class="update-tag tag-gst">GST</span>
+        <div class="update-title">GST Council 55th Meeting — Key Decisions</div>
+        <div class="update-desc">Rate rationalisation on insurance premiums, EV batteries and food delivery platforms. Circular expected shortly.</div>
+        <div class="update-time"><i class="fas fa-clock"></i> 1 day ago</div>
+      </div>
+    </div>
+    <div class="update-item" data-cat="tax india">
+      <div class="update-dot dot-gold"></div>
+      <div>
+        <span class="update-tag tag-tax">Income Tax</span>
+        <div class="update-title">ITR Filing Deadline Extended — AY 2025-26</div>
+        <div class="update-desc">CBDT extends due date for non-audit cases to 15th August 2025. Penalty provisions remain unchanged post deadline.</div>
+        <div class="update-time"><i class="fas fa-clock"></i> 3 days ago</div>
+      </div>
+    </div>
+    <div class="update-item" data-cat="india">
+      <div class="update-dot dot-green"></div>
+      <div>
+        <span class="update-tag tag-corp">Company Law</span>
+        <div class="update-title">MCA Launches V3 Portal for ROC Filings</div>
+        <div class="update-desc">New MCA21 V3 portal now mandatory for all annual return filings. Legacy V2 portal discontinued from June 2025.</div>
+        <div class="update-time"><i class="fas fa-clock"></i> 5 days ago</div>
+      </div>
+    </div>
+    <div class="update-item" data-cat="uae">
+      <div class="update-dot dot-red"></div>
+      <div>
+        <span class="update-tag tag-uae">UAE VAT</span>
+        <div class="update-title">FTA Voluntary Disclosure Amnesty Scheme</div>
+        <div class="update-desc">Penalty waiver up to 70% for voluntary disclosures filed before 31 December 2025. Regularise past VAT filings now.</div>
+        <div class="update-time"><i class="fas fa-clock"></i> 1 week ago</div>
+      </div>
+    </div>
+    <div class="update-item" data-cat="tax india">
+      <div class="update-dot dot-blue"></div>
+      <div>
+        <span class="update-tag tag-tax">Transfer Pricing</span>
+        <div class="update-title">India TP Documentation — New Threshold Rules</div>
+        <div class="update-desc">CBDT notification on revised Safe Harbour Rules for AY 2025-26. IT/ITES and KPO margins revised downward by 2%.</div>
+        <div class="update-time"><i class="fas fa-clock"></i> 2 weeks ago</div>
+      </div>
+    </div>
+  </div>
+  <div class="updates-footer">
+    <a href="#">View All Updates &nbsp;<i class="fas fa-arrow-right"></i></a>
+  </div>
+</div>
+
+</body>
+</html>
