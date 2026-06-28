@@ -1693,14 +1693,23 @@ var API_BASE = 'https://gsadvisory-backend.onrender.com';
 var GS_TOKEN = null;
 var GS_USER  = null;
 
-// Check if coming from website with token already set
+// Auto-login if token exists (set by website login)
 (function() {
   var t = localStorage.getItem('gs_token');
   var u = localStorage.getItem('gs_user');
   if (t && u) {
-    GS_TOKEN = t;
-    GS_USER  = JSON.parse(u);
-    bootApp(GS_USER);
+    try {
+      GS_TOKEN = t;
+      GS_USER  = JSON.parse(u);
+      bootApp(GS_USER);
+    } catch(e) {
+      localStorage.removeItem('gs_token');
+      localStorage.removeItem('gs_user');
+      document.getElementById('loginScreen').style.display = 'flex';
+    }
+  } else {
+    // No token — show dashboard login screen as fallback
+    document.getElementById('loginScreen').style.display = 'flex';
   }
 })();
 
@@ -1826,10 +1835,11 @@ function doLogout() {
   localStorage.removeItem('gs_user');
   GS_TOKEN = null; GS_USER = null;
   document.getElementById("appShell").classList.remove("active");
-  document.getElementById("loginScreen").style.display = "flex";
   document.getElementById("loginEmail").value = "";
   document.getElementById("loginPass").value = "";
   document.getElementById("sidebarNav").innerHTML = "";
+  // Redirect to website instead of showing dashboard login
+  window.location.href = "index.html";
 }
 
 function toggleSidebar() {
