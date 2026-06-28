@@ -668,6 +668,74 @@ a{text-decoration:none;color:inherit;}button{cursor:pointer;font-family:var(--fo
         </div>
       </div>
 
+
+      <!-- ═══════════════════════════════════════════════════════ -->
+      <!-- REGULATORY UPDATES PAGE                                  -->
+      <!-- ═══════════════════════════════════════════════════════ -->
+      <div class="ps" id="pg-updates">
+        <div class="ph">
+          <div class="ph-l">
+            <h1>Regulatory Updates</h1>
+            <p id="upd-last">Live feed from Income Tax, GST, MCA, SEBI, ICAI portals</p>
+          </div>
+          <div class="ph-r">
+            <button class="btn btn-o" onclick="fetchFreshUpdates()"><i class="fas fa-sync-alt"></i> Fetch Now</button>
+            <button class="btn btn-p" onclick="subscribeAlerts()"><i class="fas fa-bell"></i> Subscribe Alerts</button>
+          </div>
+        </div>
+
+        <!-- Stats Row -->
+        <div class="kg" style="grid-template-columns:repeat(5,1fr);">
+          <div class="kc"><div class="ki ki-t"><i class="fas fa-newspaper"></i></div><div><div class="kn" id="upd-total">--</div><div class="kl">Total Updates</div></div></div>
+          <div class="kc"><div class="ki ki-r"><i class="fas fa-exclamation-circle"></i></div><div><div class="kn" id="upd-today">--</div><div class="kl">Today</div></div></div>
+          <div class="kc"><div class="ki ki-o"><i class="fas fa-calendar-week"></i></div><div><div class="kn" id="upd-week">--</div><div class="kl">This Week</div></div></div>
+          <div class="kc"><div class="ki ki-p"><i class="fas fa-tag"></i></div><div><div class="kn" id="upd-urgent">--</div><div class="kl">High Priority</div></div></div>
+          <div class="kc"><div class="ki ki-gr"><i class="fas fa-rss"></i></div><div><div class="kn">7</div><div class="kl">Live Sources</div></div></div>
+        </div>
+
+        <!-- Source Pills -->
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px;">
+          <button class="btn btn-p btn-sm upd-src-btn active" onclick="filterUpdSrc('all',this)">All Sources</button>
+          <button class="btn btn-o btn-sm upd-src-btn" onclick="filterUpdSrc('Income Tax',this)"><i class="fas fa-file-alt"></i> Income Tax</button>
+          <button class="btn btn-o btn-sm upd-src-btn" onclick="filterUpdSrc('GST / CBIC',this)"><i class="fas fa-receipt"></i> GST / CBIC</button>
+          <button class="btn btn-o btn-sm upd-src-btn" onclick="filterUpdSrc('MCA',this)"><i class="fas fa-building"></i> MCA</button>
+          <button class="btn btn-o btn-sm upd-src-btn" onclick="filterUpdSrc('SEBI',this)"><i class="fas fa-chart-line"></i> SEBI</button>
+          <button class="btn btn-o btn-sm upd-src-btn" onclick="filterUpdSrc('ICAI',this)"><i class="fas fa-user-graduate"></i> ICAI</button>
+        </div>
+
+        <!-- Category + Search Toolbar -->
+        <div class="tb">
+          <div class="tbs"><i class="fas fa-search" style="color:var(--g300);font-size:12px;"></i><input placeholder="Search updates..." id="upd-search-dash" oninput="searchDashUpdates()"/></div>
+          <select class="fsel" id="upd-cat-filter" onchange="loadDashUpdates()" style="padding:7px 12px;border-radius:7px;font-size:12.5px;max-width:180px;">
+            <option value="all">All Categories</option>
+            <option value="Notification">Notifications</option>
+            <option value="Circular">Circulars</option>
+            <option value="Press Release">Press Releases</option>
+            <option value="Announcement">Announcements</option>
+          </select>
+          <select class="fsel" id="upd-urg-filter" onchange="loadDashUpdates()" style="padding:7px 12px;border-radius:7px;font-size:12.5px;max-width:150px;">
+            <option value="all">All Priority</option>
+            <option value="High">High Priority</option>
+            <option value="Medium">Medium</option>
+            <option value="Low">Low</option>
+          </select>
+        </div>
+
+        <!-- Updates Feed -->
+        <div class="wg">
+          <div class="wh">
+            <h3><i class="fas fa-rss" style="color:var(--teal)"></i>Live Regulatory Feed</h3>
+            <div class="whr">
+              <span class="pl pl-g" id="upd-live-badge">● Live</span>
+              <span style="font-size:12px;color:var(--g300);" id="upd-count-lbl">Loading...</span>
+            </div>
+          </div>
+          <div id="upd-feed-list" style="max-height:620px;overflow-y:auto;">
+            <div style="padding:40px;text-align:center;color:var(--g300);"><i class="fas fa-spinner fa-spin fa-2x"></i><div style="margin-top:12px;font-size:13px;">Fetching live regulatory updates...</div></div>
+          </div>
+        </div>
+      </div>
+
     </div><!-- /page-content -->
   </div><!-- /main -->
 </div><!-- /app -->
@@ -1119,6 +1187,7 @@ var ADMIN_NAV = [
   {id:'reminders',icon:'fas fa-bell',label:'Reminders',badge:'0'},
   {sec:'ANALYTICS'},
   {id:'reports',icon:'fas fa-chart-bar',label:'Reports'},
+  {id:'updates',icon:'fas fa-rss',label:'Reg. Updates',badge_new:'LIVE'},
 ];
 var EMP_NAV = [
   {sec:'OVERVIEW'},{id:'dashboard',icon:'fas fa-th-large',label:'Dashboard'},
@@ -1241,6 +1310,7 @@ function nav(id){
   else if(id==='invoices')loadInvoices();
   else if(id==='reminders')loadReminders();
   else if(id==='reports')loadReports();
+  else if(id==='updates')loadDashUpdates();
   else if(id==='client-documents')loadClientDocs();
   else if(id==='client-invoices')loadClientInvoices();
 }
@@ -2349,6 +2419,146 @@ async function loadReports(){
 document.getElementById('tk-recurring').addEventListener('change',function(){
   document.getElementById('tk-recurrence').style.display=this.checked?'block':'none';
 });
+
+
+// ─────────────────────────────────────────────
+// REGULATORY UPDATES
+// ─────────────────────────────────────────────
+var UPD_CACHE = [];
+var UPD_SRC   = 'all';
+
+async function loadDashUpdates(src) {
+  if(src !== undefined) UPD_SRC = src;
+  var cat = document.getElementById('upd-cat-filter')?.value || 'all';
+  var urg = document.getElementById('upd-urg-filter')?.value || 'all';
+  var list = document.getElementById('upd-feed-list');
+  if(!list) return;
+
+  list.innerHTML = '<div style="padding:30px;text-align:center;color:var(--g300);"><i class="fas fa-spinner fa-spin fa-2x"></i></div>';
+
+  try {
+    var params = new URLSearchParams({ limit: 60 });
+    if(UPD_SRC && UPD_SRC !== 'all') params.set('source', UPD_SRC);
+    if(cat && cat !== 'all')          params.set('category', cat);
+
+    var d = await api('/api/updates?' + params.toString());
+    if(!d.success) throw new Error(d.message);
+
+    UPD_CACHE = d.items || [];
+
+    // Apply urgency filter locally
+    var items = urg && urg !== 'all' ? UPD_CACHE.filter(function(u){return u.urgency===urg;}) : UPD_CACHE;
+
+    setText('upd-count-lbl', items.length + ' of ' + d.total + ' updates');
+    renderDashUpdates(items);
+
+    // Load stats
+    loadUpdateStats();
+  } catch(e) {
+    list.innerHTML = '<div style="padding:24px;color:#ef4444;font-size:13px;text-align:center;"><i class="fas fa-exclamation-circle"></i> ' + e.message + '<br><small style="color:var(--g300);margin-top:8px;display:block;">Fetch updates using the button above or wait for the next scheduled fetch (every 6 hours)</small></div>';
+  }
+}
+
+function renderDashUpdates(items) {
+  var list = document.getElementById('upd-feed-list');
+  if(!list) return;
+  if(!items.length) {
+    list.innerHTML = '<div style="padding:30px;text-align:center;color:var(--g300);font-size:13px;">No updates found for selected filters.</div>';
+    return;
+  }
+
+  var urgencyColors = { High: '#ef4444', Medium: '#f97316', Low: '#22c55e' };
+  var srcColors = {
+    'Income Tax':'#1d4ed8','GST / CBIC':'#16a34a','MCA':'#8b5cf6',
+    'SEBI':'#0891b2','ICAI':'#c8a951','General':'#64748b'
+  };
+  var catIcon = {
+    'Notification':'fas fa-bell','Circular':'fas fa-file-contract',
+    'Press Release':'fas fa-newspaper','Announcement':'fas fa-bullhorn'
+  };
+
+  list.innerHTML = items.map(function(item) {
+    var daysAgo = Math.round((Date.now() - new Date(item.pub_date+'T00:00:00').getTime()) / 86400000);
+    var timeStr = daysAgo === 0 ? 'Today' : daysAgo === 1 ? 'Yesterday' : daysAgo + ' days ago';
+    var srcColor = srcColors[item.source] || '#64748b';
+    var urgColor = urgencyColors[item.urgency] || '#f97316';
+    var icon = catIcon[item.category] || 'fas fa-file-alt';
+
+    return '<div style="display:flex;gap:14px;padding:14px 18px;border-bottom:1px solid var(--g50);transition:background .15s;cursor:'+(item.link?'pointer':'default')+';" '+
+      (item.link ? 'onclick="window.open(''+item.link+'','_blank')" ' : '') +
+      'onmouseover="this.style.background='rgba(15,123,108,0.03)'" onmouseout="this.style.background=''">' +
+      '<div style="width:40px;height:40px;border-radius:9px;background:'+srcColor+'18;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:'+srcColor+'"><i class="'+icon+'"></i></div>'+
+      '<div style="flex:1;min-width:0;">'+
+        '<div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:4px;">'+
+          '<span style="font-size:10px;font-weight:700;padding:2px 8px;border-radius:100px;background:'+srcColor+'18;color:'+srcColor+';">'+item.source+'</span>'+
+          '<span style="font-size:10px;padding:2px 7px;border-radius:100px;background:var(--g50);color:var(--g500);">'+item.category+'</span>'+
+          (item.urgency==='High' ? '<span style="font-size:9.5px;font-weight:700;padding:2px 7px;border-radius:100px;background:rgba(239,68,68,0.08);color:#ef4444;">URGENT</span>' : '')+
+        '</div>'+
+        '<div style="font-size:13.5px;font-weight:600;color:var(--navy);line-height:1.4;margin-bottom:4px;">'+item.title+'</div>'+
+        (item.plain_summary ? '<div style="font-size:12px;color:var(--g500);line-height:1.5;margin-bottom:4px;">'+item.plain_summary+'</div>' :
+         item.summary ? '<div style="font-size:12px;color:var(--g500);line-height:1.5;margin-bottom:4px;">'+(item.summary||'').substring(0,160)+(item.summary.length>160?'…':'')+'</div>' : '')+
+        '<div style="display:flex;align-items:center;gap:12px;">'+
+          '<span style="font-size:11px;color:var(--g300);"><i class="fas fa-clock" style="margin-right:3px;"></i>'+timeStr+'</span>'+
+          '<span style="font-size:11px;color:var(--g300);">'+item.pub_date+'</span>'+
+          (item.link ? '<span style="font-size:11px;color:var(--teal);font-weight:600;"><i class="fas fa-external-link-alt" style="margin-right:3px;"></i>View Source</span>' : '')+
+        '</div>'+
+      '</div>'+
+      '<div style="width:4px;height:40px;border-radius:2px;background:'+urgColor+';flex-shrink:0;opacity:0.6;align-self:center;"></div>'+
+    '</div>';
+  }).join('');
+}
+
+function searchDashUpdates() {
+  var q = document.getElementById('upd-search-dash').value.toLowerCase();
+  var filtered = UPD_CACHE.filter(function(u){
+    return u.title.toLowerCase().includes(q) ||
+           (u.summary||'').toLowerCase().includes(q) ||
+           (u.source||'').toLowerCase().includes(q) ||
+           (u.category||'').toLowerCase().includes(q);
+  });
+  renderDashUpdates(filtered);
+  setText('upd-count-lbl', filtered.length + ' results');
+}
+
+function filterUpdSrc(src, btn) {
+  UPD_SRC = src;
+  document.querySelectorAll('.upd-src-btn').forEach(function(b){ b.classList.remove('btn-p'); b.classList.add('btn-o'); });
+  btn.classList.remove('btn-o'); btn.classList.add('btn-p');
+  loadDashUpdates();
+}
+
+async function loadUpdateStats() {
+  try {
+    var d = await api('/api/updates/stats');
+    if(!d.success) return;
+    setText('upd-total', d.total);
+    setText('upd-today', d.today);
+    setText('upd-week',  d.thisWeek);
+    var highCount = d.byCategory ? d.byCategory.filter(function(c){return c.urgency==='High';}).reduce(function(a,c){return a+c.count;},0) : '—';
+    setText('upd-urgent', highCount || '—');
+    // Update last fetch note
+    var lf = document.getElementById('upd-last');
+    if(lf) lf.textContent = 'Live feed · ' + d.total + ' total updates · last refresh: ' + new Date().toLocaleTimeString();
+  } catch(e){}
+}
+
+async function fetchFreshUpdates() {
+  if(USER && USER.role !== 'admin'){ toast('Admin access required to trigger fetch.','error'); return; }
+  var btn = document.querySelector('[onclick="fetchFreshUpdates()"]');
+  if(btn){ btn.disabled=true; btn.innerHTML='<i class="fas fa-spinner fa-spin"></i> Fetching...'; }
+  try {
+    var d = await api('/api/updates/fetch', { method:'POST' });
+    if(d.success){
+      toast('✅ ' + d.message);
+      loadDashUpdates();
+    } else throw new Error(d.message);
+  } catch(e){ toast(e.message,'error'); }
+  finally { if(btn){ btn.disabled=false; btn.innerHTML='<i class="fas fa-sync-alt"></i> Fetch Now'; } }
+}
+
+function subscribeAlerts() {
+  toast('Email subscription: enter your email in the Reminders section to get regulatory alerts.');
+}
 
 </script>
 
