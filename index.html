@@ -1705,9 +1705,21 @@
     });
   });
 
-  function openLogin() { document.getElementById('loginModal').classList.add('active'); document.body.style.overflow='hidden'; }
-  function closeLogin() { document.getElementById('loginModal').classList.remove('active'); document.body.style.overflow=''; }
-  document.getElementById('loginModal').addEventListener('click', function(e){ if(e.target===this) closeLogin(); });
+  function openLogin() {
+    var m = document.getElementById('loginModal');
+    if(m){ m.classList.add('active'); document.body.style.overflow='hidden'; }
+  }
+  function closeLogin() {
+    var m = document.getElementById('loginModal');
+    if(m){ m.classList.remove('active'); document.body.style.overflow=''; }
+  }
+  document.addEventListener('DOMContentLoaded', function(){
+    var m = document.getElementById('loginModal');
+    if(m) m.addEventListener('click', function(e){ if(e.target===this) closeLogin(); });
+    // Backdrop for updates panel
+    var po = document.getElementById('panelOverlay');
+    if(po) po.addEventListener('click', closeUpdates);
+  });
   function openUpdates() {
     document.getElementById('updatesPanel').classList.add('active');
     document.getElementById('panelOverlay').classList.add('active');
@@ -1895,6 +1907,7 @@
 
 <script>
 var API_URL = 'https://gsadvisory-backend.onrender.com';
+// API_URL defined above
 
 // ── CONTACT FORM ──────────────────────────────────────────────
 async function submitContact() {
