@@ -456,7 +456,7 @@ a{text-decoration:none;color:inherit;}button{cursor:pointer;font-family:var(--fo
         <div class="tb">
           <div class="tbs"><i class="fas fa-search" style="color:var(--g300);font-size:12px;"></i><input placeholder="Search clients..." id="client-search" oninput="filterClients()"/></div>
           <button class="tbf btn-sm"><i class="fas fa-filter"></i> All Types</button>
-          <button class="tbf btn-sm"><i class="fas fa-download"></i> Export</button>
+          <button class="tbf btn-sm" onclick="exportClients()"><i class="fas fa-download"></i> Export CSV</button>
         </div>
         <div class="clg" id="client-grid">
           <div style="grid-column:1/-1;padding:40px;text-align:center;color:var(--g300);"><i class="fas fa-spinner fa-spin fa-2x"></i></div>
@@ -1181,7 +1181,12 @@ async function doLogin(){
 // Auto-login
 (function(){
   var t=localStorage.getItem('gs_token'),u=localStorage.getItem('gs_user');
-  if(t&&u){try{TOKEN=t;USER=JSON.parse(u);bootApp();}catch(e){showLogin();}}
+  // Check if coming from website onboard request link
+  if(localStorage.getItem('gs_show_onboard')){
+    localStorage.removeItem('gs_show_onboard');
+    showLogin();
+    setTimeout(function(){ openM('m-onboard'); }, 600);
+  } else if(t&&u){try{TOKEN=t;USER=JSON.parse(u);bootApp();}catch(e){showLogin();}}
   else{showLogin();}
 })();
 
@@ -1201,6 +1206,9 @@ function bootApp(){
   buildNav();
   nav(USER.role==='client'?'client-dashboard':'dashboard');
   loadStats();
+  // Pre-load team and clients into cache for dropdowns
+  api('/api/team').then(function(d){ if(d.success) TEAM_CACHE=d.members; });
+  api('/api/clients').then(function(d){ if(d.success) CLIENTS_CACHE=d.clients; });
 }
 
 function buildNav(){
@@ -1673,7 +1681,13 @@ async function updateTaskStatus(id,status){
   if(d.success){toast('Task updated to: '+status.replace('_',' '));loadTasks();loadStats();}
   else toast(d.message,'error');
 }
-function openTransfer(id){toast('Transfer task: select new assignee (coming in next update).');}
+function openTransfer(id){toast('Transfer task: select new assignee (coming in next update.');}
+
+function editClientDirect(id) {
+  viewClient(id).then(function(){
+    setTimeout(function(){ toggleClientEdit(); }, 400);
+  });
+}
 
 // ─────────────────────────────────────────────
 // CLIENTS
@@ -1710,7 +1724,10 @@ function renderClients(clients){
       '</div>'+
       '<div style="display:flex;justify-content:space-between;align-items:center;padding-top:10px;border-top:1px solid var(--g50);">'+
         '<div style="font-size:11.5px;color:var(--g500);">'+(c.email||c.phone||'')+'</div>'+
-        '<span class="pl '+(c.status==='active'?'pl-g':'pl-gray')+'">'+((c.status||'active').toUpperCase())+'</span>'+
+        '<div style="display:flex;gap:6px;align-items:center;">'+
+          '<span class="pl '+(c.status==='active'?'pl-g':'pl-gray')+'">'+((c.status||'active').toUpperCase())+'</span>'+
+          '<button class="btn btn-o btn-sm" onclick="event.stopPropagation();editClientDirect('+c.id+')"><i class="fas fa-edit"></i></button>'+
+        '</div>'+
       '</div>'+
     '</div>';
   }).join('');
@@ -1721,7 +1738,262 @@ function filterClients(){
   var filtered=CLIENTS_CACHE.filter(function(c){return c.name.toLowerCase().includes(q)||(c.email||'').toLowerCase().includes(q)||(c.entity_type||'').toLowerCase().includes(q);});
   renderClients(filtered);
 }
-function viewClient(id){toast('Client detail view: coming in next update.');}
+
+// ─── ACTIVE CLIENT ID for detail modal ───
+var CURRENT_CLIENT_ID = null;
+var CLIENT_EDIT_MODE = false;
+
+async function viewClient(id){
+  CURRENT_CLIENT_ID = id;
+  CLIENT_EDIT_MODE = false;
+
+  try {
+    var d = await api('/api/clients/' + id);
+    if(!d.success) throw new Error(d.message);
+    var c = d.client;
+
+    // Header
+    var init = c.name.split(' ').map(function(w){return w[0];}).join('').substring(0,2);
+    var CCOLS=['#0f7b6c','#c8a951','#8b5cf6','#ef4444','#f97316','#1d4ed8'];
+    var av = document.getElementById('cd-avatar');
+    av.textContent = init;
+    av.style.background = 'linear-gradient(135deg,' + CCOLS[id % CCOLS.length] + ',#0d1b2a)';
+    document.getElementById('cd-title').textContent = c.name;
+    document.getElementById('cd-sub').textContent = (c.entity_type||'') + (c.city ? ' · ' + c.city : '') + (c.pan ? ' · PAN: ' + c.pan : '');
+
+    // Info tab
+    setVal('cd-type', c.entity_type);
+    setVal('cd-name', c.name);
+    setVal('cd-biz', c.business_name);
+    setVal('cd-pan', c.pan);
+    setVal('cd-aadh', c.aadhaar);
+    setVal('cd-dob', c.dob);
+    setVal('cd-res', c.residential_status);
+    setVal('cd-occ', c.occupation);
+
+    // Contact tab
+    setVal('cd-mob', c.phone);
+    setVal('cd-mob2', c.alternate_phone);
+    setVal('cd-email', c.email);
+    setVal('cd-wa', c.whatsapp);
+    setVal('cd-addr', c.address);
+    setVal('cd-city', c.city);
+    setVal('cd-state', c.state);
+    setVal('cd-pin', c.pin_code);
+    setVal('cd-country', c.country || 'India');
+
+    // Business tab
+    setVal('cd-gstin', c.gstin);
+    setVal('cd-tan', c.tan);
+    setVal('cd-cin', c.cin);
+    setVal('cd-bnature', c.nature_of_business);
+    setVal('cd-turnover', c.annual_turnover ? '₹' + Number(c.annual_turnover).toLocaleString('en-IN') : '');
+    setVal('cd-emp', c.num_employees);
+    setVal('cd-auditor', c.current_auditor);
+    setVal('cd-udyam', c.udyam_number);
+
+    // Services tab
+    var svcs = []; try { svcs = JSON.parse(c.services || '[]'); } catch(e){}
+    var sl = document.getElementById('cd-services-list');
+    sl.innerHTML = svcs.length
+      ? svcs.map(function(s){return '<span class="pl pl-t" style="font-size:12px;padding:5px 12px;">'+s+'</span>';}).join('')
+      : '<span style="color:var(--g300);font-size:13px;">No services assigned.</span>';
+    document.getElementById('cd-assignee').textContent = c.assignee_name || '—';
+    document.getElementById('cd-notes').textContent = c.notes || '—';
+
+    // Bank tab
+    setVal('cd-bank', c.bank_name);
+    setVal('cd-acname', c.account_holder);
+    setVal('cd-ifsc', c.ifsc);
+    setVal('cd-branch', c.bank_branch);
+
+    // Tasks tab — load client tasks
+    loadClientTasks(id);
+
+    // Reset to view mode
+    setEditMode(false);
+    // Reset to first tab
+    document.querySelectorAll('#cd-tabs .tabt').forEach(function(t,i){t.classList.toggle('on',i===0);});
+    document.querySelectorAll('#m-clientdetail .tabc').forEach(function(t,i){t.classList.toggle('on',i===0);});
+
+    openM('m-clientdetail');
+  } catch(e) {
+    toast(e.message || 'Failed to load client', 'error');
+  }
+}
+
+function setVal(id, val) {
+  var el = document.getElementById(id);
+  if(el) el.value = val || '';
+}
+
+function switchCDTab(el, tabId) {
+  document.querySelectorAll('#cd-tabs .tabt').forEach(function(t){t.classList.remove('on');});
+  document.querySelectorAll('#m-clientdetail .tabc').forEach(function(t){t.classList.remove('on');});
+  el.classList.add('on');
+  document.getElementById(tabId).classList.add('on');
+}
+
+function toggleClientEdit() {
+  CLIENT_EDIT_MODE = !CLIENT_EDIT_MODE;
+  setEditMode(CLIENT_EDIT_MODE);
+}
+
+function setEditMode(editing) {
+  CLIENT_EDIT_MODE = editing;
+  var inputs = document.querySelectorAll('#m-clientdetail .finp, #m-clientdetail .fsel');
+  inputs.forEach(function(inp){
+    if(editing) inp.removeAttribute('readonly');
+    else inp.setAttribute('readonly', true);
+  });
+  var editBtn = document.getElementById('cd-edit-btn');
+  if(editBtn) editBtn.innerHTML = editing ? '<i class="fas fa-times"></i> Cancel' : '<i class="fas fa-edit"></i> Edit';
+  var footer = document.getElementById('cd-edit-footer');
+  if(footer) footer.style.display = editing ? 'flex' : 'none';
+}
+
+async function saveClientEdit() {
+  if(!CURRENT_CLIENT_ID) return;
+  var updated = {
+    name:              document.getElementById('cd-name').value.trim(),
+    entity_type:       document.getElementById('cd-type').value,
+    email:             document.getElementById('cd-email').value.trim(),
+    phone:             document.getElementById('cd-mob').value.trim(),
+    alternate_phone:   document.getElementById('cd-mob2').value.trim(),
+    whatsapp:          document.getElementById('cd-wa').value.trim(),
+    address:           document.getElementById('cd-addr').value.trim(),
+    city:              document.getElementById('cd-city').value.trim(),
+    state:             document.getElementById('cd-state').value,
+    pin_code:          document.getElementById('cd-pin').value.trim(),
+    country:           document.getElementById('cd-country').value.trim(),
+    pan:               document.getElementById('cd-pan').value.trim().toUpperCase(),
+    gstin:             document.getElementById('cd-gstin').value.trim().toUpperCase(),
+    tan:               document.getElementById('cd-tan').value.trim().toUpperCase(),
+    nature_of_business:document.getElementById('cd-bnature').value.trim(),
+    bank_name:         document.getElementById('cd-bank').value.trim(),
+    account_holder:    document.getElementById('cd-acname').value.trim(),
+    ifsc:              document.getElementById('cd-ifsc').value.trim().toUpperCase(),
+    bank_branch:       document.getElementById('cd-branch').value.trim(),
+  };
+  if(!updated.name){ toast('Name is required.','error'); return; }
+  try {
+    var d = await api('/api/clients/' + CURRENT_CLIENT_ID, {method:'PUT', body:JSON.stringify(updated)});
+    if(!d.success) throw new Error(d.message);
+    toast('✅ Client updated successfully.');
+    setEditMode(false);
+    CLIENTS_CACHE = [];
+    loadClients();
+    // Refresh header
+    document.getElementById('cd-title').textContent = updated.name;
+  } catch(e) { toast(e.message,'error'); }
+}
+
+async function loadClientTasks(clientId) {
+  var el = document.getElementById('cd-tasks-list');
+  if(!el) return;
+  try {
+    var d = await api('/api/tasks?client_id=' + clientId);
+    if(!d.success) throw new Error(d.message);
+    var tasks = d.tasks || [];
+    if(!tasks.length){
+      el.innerHTML='<div style="color:var(--g300);font-size:13px;text-align:center;padding:20px;">No tasks for this client yet.</div>';
+      return;
+    }
+    var sc = {pending:'pl-gray','in_progress':'pl-t',completed:'pl-g',overdue:'pl-r'};
+    el.innerHTML = tasks.map(function(t){
+      var od = t.due_date && t.due_date < new Date().toISOString().split('T')[0] && t.status !== 'completed';
+      return '<div class="tki p-'+(t.priority||'medium')+'">'+
+        '<div style="flex:1;"><div class="tktit">'+t.title+'</div>'+
+        '<div class="tkm"><span>'+(t.assignee_name||'Unassigned')+'</span>'+
+        (t.due_date ? '<span style="color:'+(od?'#ef4444':'var(--g300)')+';">Due: '+t.due_date+'</span>' : '')+
+        '</div></div>'+
+        '<span class="pl '+(sc[t.status]||'pl-gray')+'">'+((t.status||'').replace('_',' '))+'</span>'+
+      '</div>';
+    }).join('');
+  } catch(e) { el.innerHTML='<div style="color:#ef4444;font-size:13px;padding:10px;">'+e.message+'</div>'; }
+}
+
+function openTaskForClient() {
+  closeM('m-clientdetail');
+  setTimeout(function(){
+    openM('m-addtask');
+    // Pre-select client
+    if(CURRENT_CLIENT_ID){
+      var sel = document.getElementById('tk-client');
+      if(sel) sel.value = CURRENT_CLIENT_ID;
+    }
+  }, 300);
+}
+
+// ─── EXPORT CLIENTS ───────────────────────────────────────────
+function exportClients() {
+  var clients = CLIENTS_CACHE;
+  if(!clients.length){ toast('No clients to export.','warn'); return; }
+  var headers = ['Name','Type','Email','Phone','PAN','GSTIN','City','State','Status'];
+  var rows = clients.map(function(c){
+    return [
+      c.name||'',c.entity_type||'',c.email||'',c.phone||'',
+      c.pan||'',c.gstin||'',c.city||'',c.state||'',c.status||'active'
+    ].map(function(v){ return '"'+String(v).replace(/"/g,'""')+'"'; }).join(',');
+  });
+  var csv = headers.join(',') + '\n' + rows.join('\n');
+  var blob = new Blob([csv], {type:'text/csv'});
+  var a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'GS_Advisory_Clients_' + new Date().toISOString().split('T')[0] + '.csv';
+  a.click();
+  toast('✅ Clients exported to CSV.');
+}
+
+// ─── ONBOARD REQUEST ──────────────────────────────────────────
+async function submitOnboardRequest() {
+  var name    = document.getElementById('ob-name').value.trim();
+  var email   = document.getElementById('ob-email').value.trim();
+  var phone   = document.getElementById('ob-phone').value.trim();
+  var type    = document.getElementById('ob-type').value;
+  var biz     = document.getElementById('ob-biz').value.trim();
+  var service = document.getElementById('ob-service').value;
+  var msg     = document.getElementById('ob-msg').value.trim();
+  var al      = document.getElementById('ob-alert');
+  var btn     = document.getElementById('ob-btn');
+
+  if(!name||!email||!phone){
+    al.style.display='block';al.style.background='rgba(239,68,68,0.08)';al.style.color='#dc2626';al.style.border='1px solid rgba(239,68,68,0.2)';
+    al.textContent='Please fill Name, Email and Phone.'; return;
+  }
+
+  btn.disabled=true; btn.innerHTML='<i class="fas fa-spinner fa-spin"></i> Submitting...';
+  al.style.display='none';
+
+  try {
+    var d = await fetch(API+'/api/contact', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        name, email, phone, service,
+        subject: 'Portal Access Request — ' + (biz||name),
+        message: 'Client Type: '+type+'\nBusiness: '+(biz||'—')+'\nService Required: '+service+'\n\n'+(msg||'')
+      })
+    });
+    var res = await d.json();
+    if(!res.success) throw new Error(res.message);
+    al.style.display='block';al.style.background='rgba(34,197,94,0.08)';al.style.color='#16a34a';al.style.border='1px solid rgba(34,197,94,0.2)';
+    al.textContent='✅ Request submitted! GS Advisory team will contact you within 24 hours.';
+    btn.innerHTML='<i class="fas fa-check"></i> Submitted';
+    // Clear form after 3 seconds
+    setTimeout(function(){
+      ['ob-name','ob-email','ob-phone','ob-biz','ob-msg'].forEach(function(id){document.getElementById(id).value='';});
+      al.style.display='none';
+      btn.innerHTML='<i class="fas fa-paper-plane"></i> Submit Request';
+      btn.disabled=false;
+    }, 4000);
+  } catch(e) {
+    al.style.display='block';al.style.background='rgba(239,68,68,0.08)';al.style.color='#dc2626';al.style.border='1px solid rgba(239,68,68,0.2)';
+    al.textContent='❌ '+(e.message||'Submission failed. Please try again.');
+    btn.disabled=false; btn.innerHTML='<i class="fas fa-paper-plane"></i> Submit Request';
+  }
+}
+
 
 async function saveClient(){
   var name=document.getElementById('cl-name').value.trim();
@@ -2079,5 +2351,145 @@ document.getElementById('tk-recurring').addEventListener('change',function(){
 });
 
 </script>
+
+<!-- CLIENT DETAIL / EDIT MODAL -->
+<div class="mb" id="m-clientdetail">
+  <div class="mbox lg">
+    <div class="mh">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <div id="cd-avatar" style="width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--navy),var(--teal));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:16px;flex-shrink:0;"></div>
+        <div><h3 id="cd-title">Client Details</h3><div id="cd-sub" style="font-size:12px;color:var(--g300);margin-top:2px;"></div></div>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center;">
+        <button class="btn btn-g btn-sm" id="cd-edit-btn" onclick="toggleClientEdit()"><i class="fas fa-edit"></i> Edit</button>
+        <button class="mx" onclick="closeM('m-clientdetail')"><i class="fas fa-times"></i></button>
+      </div>
+    </div>
+    <div class="mbody">
+      <div class="tabbar" id="cd-tabs">
+        <div class="tabt on" onclick="switchCDTab(this,'cd-tab-info')">Basic Info</div>
+        <div class="tabt" onclick="switchCDTab(this,'cd-tab-contact')">Contact</div>
+        <div class="tabt" onclick="switchCDTab(this,'cd-tab-biz')">Business</div>
+        <div class="tabt" onclick="switchCDTab(this,'cd-tab-services')">Services</div>
+        <div class="tabt" onclick="switchCDTab(this,'cd-tab-bank')">Bank</div>
+        <div class="tabt" onclick="switchCDTab(this,'cd-tab-tasks')">Tasks</div>
+      </div>
+
+      <!-- INFO TAB -->
+      <div class="tabc on" id="cd-tab-info">
+        <div class="fg">
+          <div><label class="fl">Client Type</label><input class="finp" id="cd-type" readonly/></div>
+          <div><label class="fl">Full Name</label><input class="finp" id="cd-name" readonly/></div>
+          <div><label class="fl">Business Name</label><input class="finp" id="cd-biz" readonly/></div>
+          <div><label class="fl">PAN</label><input class="finp" id="cd-pan" readonly/></div>
+          <div><label class="fl">Aadhaar</label><input class="finp" id="cd-aadh" readonly/></div>
+          <div><label class="fl">Date of Birth / Incorporation</label><input class="finp" id="cd-dob" readonly/></div>
+          <div><label class="fl">Residential Status</label><input class="finp" id="cd-res" readonly/></div>
+          <div><label class="fl">Occupation</label><input class="finp" id="cd-occ" readonly/></div>
+        </div>
+      </div>
+
+      <!-- CONTACT TAB -->
+      <div class="tabc" id="cd-tab-contact">
+        <div class="fg">
+          <div><label class="fl">Mobile</label><input class="finp" id="cd-mob" readonly/></div>
+          <div><label class="fl">Alternate Mobile</label><input class="finp" id="cd-mob2" readonly/></div>
+          <div><label class="fl">Email</label><input class="finp" id="cd-email" readonly/></div>
+          <div><label class="fl">WhatsApp</label><input class="finp" id="cd-wa" readonly/></div>
+          <div class="ff"><label class="fl">Address</label><input class="finp" id="cd-addr" readonly/></div>
+          <div><label class="fl">City</label><input class="finp" id="cd-city" readonly/></div>
+          <div><label class="fl">State</label><input class="finp" id="cd-state" readonly/></div>
+          <div><label class="fl">PIN Code</label><input class="finp" id="cd-pin" readonly/></div>
+          <div><label class="fl">Country</label><input class="finp" id="cd-country" readonly/></div>
+        </div>
+      </div>
+
+      <!-- BUSINESS TAB -->
+      <div class="tabc" id="cd-tab-biz">
+        <div class="fg">
+          <div><label class="fl">GSTIN</label><input class="finp" id="cd-gstin" readonly/></div>
+          <div><label class="fl">TAN</label><input class="finp" id="cd-tan" readonly/></div>
+          <div><label class="fl">CIN / LLPIN</label><input class="finp" id="cd-cin" readonly/></div>
+          <div><label class="fl">Nature of Business</label><input class="finp" id="cd-bnature" readonly/></div>
+          <div><label class="fl">Annual Turnover</label><input class="finp" id="cd-turnover" readonly/></div>
+          <div><label class="fl">Employees</label><input class="finp" id="cd-emp" readonly/></div>
+          <div><label class="fl">Current Auditor</label><input class="finp" id="cd-auditor" readonly/></div>
+          <div><label class="fl">UDYAM Number</label><input class="finp" id="cd-udyam" readonly/></div>
+        </div>
+      </div>
+
+      <!-- SERVICES TAB -->
+      <div class="tabc" id="cd-tab-services">
+        <div id="cd-services-list" style="display:flex;flex-wrap:wrap;gap:8px;padding:10px 0;"></div>
+        <div style="margin-top:18px;padding-top:14px;border-top:1px solid var(--g100);">
+          <div class="fl" style="margin-bottom:10px;">Assigned To</div>
+          <div id="cd-assignee" style="font-size:14px;font-weight:600;color:var(--navy);"></div>
+        </div>
+        <div style="margin-top:14px;"><div class="fl" style="margin-bottom:6px;">Internal Notes</div><div id="cd-notes" style="font-size:13px;color:var(--g700);padding:10px;background:var(--g50);border-radius:6px;"></div></div>
+      </div>
+
+      <!-- BANK TAB -->
+      <div class="tabc" id="cd-tab-bank">
+        <div class="fg">
+          <div><label class="fl">Bank Name</label><input class="finp" id="cd-bank" readonly/></div>
+          <div><label class="fl">Account Holder</label><input class="finp" id="cd-acname" readonly/></div>
+          <div><label class="fl">IFSC</label><input class="finp" id="cd-ifsc" readonly/></div>
+          <div><label class="fl">Branch</label><input class="finp" id="cd-branch" readonly/></div>
+        </div>
+      </div>
+
+      <!-- TASKS TAB -->
+      <div class="tabc" id="cd-tab-tasks">
+        <div id="cd-tasks-list" style="display:flex;flex-direction:column;gap:8px;">
+          <div style="color:var(--g300);font-size:13px;text-align:center;padding:20px;"><i class="fas fa-spinner fa-spin"></i></div>
+        </div>
+        <div style="margin-top:14px;">
+          <button class="btn btn-p btn-sm" onclick="openTaskForClient()"><i class="fas fa-plus"></i> Add Task for this Client</button>
+        </div>
+      </div>
+    </div>
+    <div class="mfoot" id="cd-edit-footer" style="display:none;">
+      <button class="btn btn-o" onclick="toggleClientEdit()">Cancel Edit</button>
+      <button class="btn btn-p" onclick="saveClientEdit()"><i class="fas fa-save"></i> Save Changes</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- ONBOARD REQUEST MODAL (from website) -->
+<div class="mb" id="m-onboard">
+  <div class="mbox">
+    <div class="mh"><h3>Request Portal Access</h3><button class="mx" onclick="closeM('m-onboard')"><i class="fas fa-times"></i></button></div>
+    <div class="mbody">
+      <div style="background:linear-gradient(135deg,rgba(15,123,108,0.06),rgba(200,169,81,0.04));border:1px solid rgba(15,123,108,0.12);border-radius:8px;padding:14px 16px;margin-bottom:18px;font-size:13px;color:var(--g700);">
+        <i class="fas fa-info-circle" style="color:var(--teal);margin-right:6px;"></i>
+        Fill this form to request access to the GS Advisory client portal. Our team will reach out within 24 hours.
+      </div>
+      <div class="fg">
+        <div><label class="fl">Full Name *</label><input class="finp" id="ob-name" placeholder="Your full name"/></div>
+        <div><label class="fl">Email Address *</label><input class="finp" id="ob-email" type="email" placeholder="your@email.com"/></div>
+        <div><label class="fl">Mobile Number *</label><input class="finp" id="ob-phone" placeholder="+91 / +971..."/></div>
+        <div><label class="fl">Client Type</label>
+          <select class="fsel" id="ob-type">
+            <option>Individual</option><option>Proprietorship</option><option>Partnership</option><option>LLP</option><option>Private Limited</option><option>Trust</option><option>Others</option>
+          </select>
+        </div>
+        <div class="ff"><label class="fl">Business / Organisation Name</label><input class="finp" id="ob-biz" placeholder="If applicable"/></div>
+        <div class="ff"><label class="fl">Services Required</label>
+          <select class="fsel" id="ob-service">
+            <option>Income Tax Return (ITR)</option><option>GST Registration</option><option>GST Return Filing</option><option>TDS Return</option><option>Bookkeeping</option><option>Audit</option><option>Company Incorporation</option><option>LLP Registration</option><option>ROC Compliance</option><option>Virtual CFO</option><option>UAE VAT</option><option>Others</option>
+          </select>
+        </div>
+        <div class="ff"><label class="fl">Message / Specific Requirements</label><textarea class="fta" id="ob-msg" placeholder="Describe your requirements..."></textarea></div>
+      </div>
+      <div id="ob-alert" style="display:none;padding:10px 14px;border-radius:6px;font-size:13px;font-weight:600;margin-top:12px;"></div>
+    </div>
+    <div class="mfoot">
+      <button class="btn btn-o" onclick="closeM('m-onboard')">Cancel</button>
+      <button class="btn btn-p" id="ob-btn" onclick="submitOnboardRequest()"><i class="fas fa-paper-plane"></i> Submit Request</button>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
