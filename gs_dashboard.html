@@ -1521,7 +1521,47 @@ function deleteService(i){
   renderServices();
   toast('Service deleted.');
 }
-function editService(i){toast('Edit service: coming in next update.');} 
+function editService(i){
+  var svcs = getServices();
+  var s = svcs[i];
+  if(!s) return;
+  // Populate add service modal with existing data
+  document.getElementById('sv-name').value = s.name || '';
+  document.getElementById('sv-cat').value  = s.category || 'Tax & Compliance';
+  document.getElementById('sv-fee').value  = s.fee || '';
+  document.getElementById('sv-desc').value = s.desc || '';
+  document.getElementById('sv-icon').value = s.icon || 'fas fa-file-invoice';
+  // Change modal title and button
+  var mh = document.querySelector('#m-addservice .mh h3');
+  if(mh) mh.textContent = 'Edit Service';
+  var btn = document.querySelector('#m-addservice .mfoot .btn-p');
+  if(btn){
+    btn.innerHTML = '<i class="fas fa-save"></i> Save Changes';
+    btn.onclick = function(){ saveEditService(i); };
+  }
+  openM('m-addservice');
+}
+
+function saveEditService(i){
+  var svcs = getServices();
+  svcs[i].name     = document.getElementById('sv-name').value.trim();
+  svcs[i].category = document.getElementById('sv-cat').value;
+  svcs[i].fee      = parseInt(document.getElementById('sv-fee').value) || 0;
+  svcs[i].desc     = document.getElementById('sv-desc').value.trim();
+  svcs[i].icon     = document.getElementById('sv-icon').value.trim() || 'fas fa-file-invoice';
+  if(!svcs[i].name){ toast('Service name is required.','error'); return; }
+  saveServices(svcs);
+  closeM('m-addservice');
+  // Reset modal back to Add mode
+  var mh = document.querySelector('#m-addservice .mh h3');
+  if(mh) mh.textContent = 'Add Service';
+  var btn = document.querySelector('#m-addservice .mfoot .btn-p');
+  if(btn){ btn.innerHTML = '<i class="fas fa-plus"></i> Add Service'; btn.onclick = addService; }
+  ['sv-name','sv-fee','sv-desc'].forEach(function(id){ document.getElementById(id).value=''; });
+  document.getElementById('sv-icon').value = 'fas fa-file-invoice';
+  toast('Service updated.');
+  renderServices();
+} 
 
 // ─────────────────────────────────────────────
 // TASKS
