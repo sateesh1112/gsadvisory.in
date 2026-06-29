@@ -354,25 +354,22 @@ a{text-decoration:none;color:inherit;}button{cursor:pointer;font-family:var(--fo
             <div class="wg">
               <div class="wh"><h3><i class="fas fa-calendar-alt" style="color:#ef4444"></i>Compliance Due</h3><span style="font-size:12px;font-weight:600;color:var(--teal);cursor:pointer;" onclick="nav('compliance')">View All</span></div>
               <div id="wd-compliance">
-                <div class="coi"><div class="codt cd-u">07<div class="cdm">Jul</div></div><div class="cob"><div class="cot">GSTR-1 Filing</div><div class="cos">Monthly — 12 clients</div></div><div class="coa">File Now</div></div>
-                <div class="coi"><div class="codt cd-s">11<div class="cdm">Jul</div></div><div class="cob"><div class="cot">TDS Challan</div><div class="cos">Q1 — 8 clients</div></div><div class="coa">Review</div></div>
-                <div class="coi"><div class="codt cd-s">15<div class="cdm">Jul</div></div><div class="cob"><div class="cot">GSTR-3B Filing</div><div class="cos">Monthly — all GST clients</div></div><div class="coa">Prepare</div></div>
-                <div class="coi"><div class="codt cd-n">31<div class="cdm">Jul</div></div><div class="cob"><div class="cot">ITR Filing</div><div class="cos">Non-audit cases — 19 clients</div></div><div class="coa">Track</div></div>
+                <div style="padding:16px;text-align:center;color:var(--g300);font-size:13px;"><i class="fas fa-spinner fa-spin"></i></div>
               </div>
             </div>
             <!-- Recent Activity -->
             <div class="wg">
               <div class="wh"><h3><i class="fas fa-history" style="color:var(--teal)"></i>Recent Activity</h3></div>
-              <div class="ai"><div class="adot ad-gr"><i class="fas fa-check"></i></div><div><div class="atxt"><strong>ITR Filed</strong> for Priya Sharma</div><div class="atime">2 hours ago</div></div></div>
-              <div class="ai"><div class="adot ad-t"><i class="fas fa-file-invoice"></i></div><div><div class="atxt"><strong>Invoice #GS-0284</strong> sent — ₹18,000</div><div class="atime">4 hours ago</div></div></div>
-              <div class="ai"><div class="adot ad-g"><i class="fas fa-user-plus"></i></div><div><div class="atxt">New client <strong>Al Noor LLC</strong> added</div><div class="atime">Yesterday</div></div></div>
-              <div class="ai"><div class="adot ad-r"><i class="fas fa-bell"></i></div><div><div class="atxt"><strong>Reminder sent</strong> to Mehta & Sons</div><div class="atime">Yesterday</div></div></div>
+              <div id="activity-feed" style="padding:10px 0;">
+                <div style="padding:16px;text-align:center;color:var(--g300);font-size:13px;"><i class="fas fa-spinner fa-spin"></i></div>
+              </div>
             </div>
             <!-- Notifications -->
             <div class="wg">
               <div class="wh"><h3><i class="fas fa-bell" style="color:#f97316"></i>Alerts</h3><span class="bdg b-r" id="k-inq">0 new</span></div>
-              <div class="noi"><div class="noic" style="background:rgba(239,68,68,0.08);color:#ef4444"><i class="fas fa-exclamation-circle"></i></div><div><div class="notn">3 Overdue Tasks</div><div class="nots">GSTR-1, TDS Challan, Invoice payment</div><div class="nott">Action needed</div></div></div>
-              <div class="noi"><div class="noic" style="background:rgba(200,169,81,0.1);color:var(--gold-dark)"><i class="fas fa-envelope"></i></div><div><div class="notn" id="k-inq-lbl">New Website Inquiries</div><div class="nots">Contact form submissions pending review</div><div class="nott">Today</div></div></div>
+              <div id="alerts-widget">
+                <div style="padding:16px;text-align:center;color:var(--g300);font-size:13px;"><i class="fas fa-spinner fa-spin"></i></div>
+              </div>
             </div>
           </div>
         </div>
@@ -571,13 +568,15 @@ a{text-decoration:none;color:inherit;}button{cursor:pointer;font-family:var(--fo
         <div class="g2e">
           <div class="wg">
             <div class="wh"><h3><i class="fas fa-bell" style="color:#ef4444"></i>Overdue Alerts</h3><span class="bdg b-r">Urgent</span></div>
-            <div class="coi"><div class="codt cd-u">05<div class="cdm">Jul</div></div><div class="cob"><div class="cot">GSTR-1 — Rahul Traders</div><div class="cos">7 days overdue</div></div><div class="coa" style="color:#ef4444;">Send</div></div>
-            <div class="coi"><div class="codt cd-u">07<div class="cdm">Jul</div></div><div class="cob"><div class="cot">TDS Challan — Mehta & Sons</div><div class="cos">Overdue</div></div><div class="coa" style="color:#ef4444;">Send</div></div>
+            <div id="rem-overdue-list" style="padding:8px 0;">
+              <div style="padding:16px;text-align:center;color:var(--g300);font-size:13px;"><i class="fas fa-spinner fa-spin"></i></div>
+            </div>
           </div>
           <div class="wg">
             <div class="wh"><h3><i class="fas fa-clock" style="color:#f97316"></i>Due This Week</h3></div>
-            <div class="coi"><div class="codt cd-s">11<div class="cdm">Jul</div></div><div class="cob"><div class="cot">TDS Return Q1 (26Q)</div><div class="cos">6 clients pending</div></div><div class="coa">Prepare</div></div>
-            <div class="coi"><div class="codt cd-s">15<div class="cdm">Jul</div></div><div class="cob"><div class="cot">GSTR-3B Monthly</div><div class="cos">All GST clients</div></div><div class="coa">Prepare</div></div>
+            <div id="rem-due-week" style="padding:8px 0;">
+              <div style="padding:16px;text-align:center;color:var(--g300);font-size:13px;"><i class="fas fa-spinner fa-spin"></i></div>
+            </div>
           </div>
         </div>
         <div class="wg">
@@ -680,7 +679,8 @@ a{text-decoration:none;color:inherit;}button{cursor:pointer;font-family:var(--fo
           </div>
           <div class="ph-r">
             <button class="btn btn-o" onclick="fetchFreshUpdates()"><i class="fas fa-sync-alt"></i> Fetch Now</button>
-            <button class="btn btn-p" onclick="subscribeAlerts()"><i class="fas fa-bell"></i> Subscribe Alerts</button>
+            <button class="btn btn-o" onclick="subscribeAlerts()"><i class="fas fa-bell"></i> Subscribe Alerts</button>
+            <button class="btn btn-g" onclick="openM('m-push-update')"><i class="fas fa-bullhorn"></i> Push Update</button>
           </div>
         </div>
 
@@ -762,6 +762,65 @@ a{text-decoration:none;color:inherit;}button{cursor:pointer;font-family:var(--fo
           <div id="notif-list" style="padding:8px 0;">
             <div style="padding:30px;text-align:center;color:var(--g300);"><i class="fas fa-spinner fa-spin fa-2x"></i></div>
           </div>
+        </div>
+      </div>
+
+
+      <!-- BLOGS PAGE -->
+      <div class="ps" id="pg-blogs">
+        <div class="ph">
+          <div class="ph-l"><h1>Blog & Articles</h1><p>Publish insights and articles to gsadvisory.in</p></div>
+          <div class="ph-r"><button class="btn btn-p" onclick="openM('m-writeblog')"><i class="fas fa-pen-nib"></i> Write Article</button></div>
+        </div>
+        <div class="tb">
+          <div class="tbs"><i class="fas fa-search" style="color:var(--g300);font-size:12px;"></i><input placeholder="Search articles..." id="blog-search" oninput="filterBlogs()"/></div>
+          <select class="fsel" id="blog-status-filter" onchange="loadBlogs()" style="padding:7px 12px;border-radius:7px;font-size:12.5px;max-width:160px;">
+            <option value="published">Published</option>
+            <option value="draft">Drafts</option>
+          </select>
+        </div>
+        <div class="wg">
+          <table class="dt"><thead><tr><th>Title</th><th>Category</th><th>Author</th><th>Status</th><th>Views</th><th>Date</th><th>Actions</th></tr></thead>
+          <tbody id="blog-tbody"><tr><td colspan="7" style="text-align:center;padding:28px;color:var(--g300);"><i class="fas fa-spinner fa-spin"></i></td></tr></tbody></table>
+        </div>
+      </div>
+
+      <!-- SETTINGS PAGE -->
+      <div class="ps" id="pg-settings">
+        <div class="ph"><div class="ph-l"><h1>Settings</h1><p>Account preferences and security</p></div></div>
+        <div class="g2e">
+          <!-- Change Password -->
+          <div class="wg">
+            <div class="wh"><h3><i class="fas fa-lock" style="color:var(--teal)"></i>Change Password</h3></div>
+            <div style="padding:20px;">
+              <div id="pw-alert" style="display:none;padding:10px 14px;border-radius:6px;font-size:13px;font-weight:600;margin-bottom:14px;"></div>
+              <label class="fl">Current Password</label>
+              <input class="finp" type="password" id="pw-current" placeholder="Current password" style="margin-bottom:12px;"/>
+              <label class="fl">New Password</label>
+              <input class="finp" type="password" id="pw-new" placeholder="Min 8 characters" style="margin-bottom:12px;"/>
+              <label class="fl">Confirm New Password</label>
+              <input class="finp" type="password" id="pw-confirm" placeholder="Re-enter new password" style="margin-bottom:16px;"/>
+              <button class="btn btn-p" onclick="changePassword()"><i class="fas fa-lock"></i> Update Password</button>
+            </div>
+          </div>
+          <!-- Profile Info -->
+          <div class="wg">
+            <div class="wh"><h3><i class="fas fa-user" style="color:var(--gold-dark)"></i>My Profile</h3></div>
+            <div style="padding:20px;">
+              <div id="profile-info" style="display:flex;flex-direction:column;gap:12px;">
+                <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--g50);"><span style="font-size:12px;color:var(--g300);text-transform:uppercase;font-weight:700;">Name</span><span id="prof-name" style="font-size:13.5px;font-weight:600;color:var(--navy);">--</span></div>
+                <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--g50);"><span style="font-size:12px;color:var(--g300);text-transform:uppercase;font-weight:700;">Email</span><span id="prof-email" style="font-size:13.5px;font-weight:600;color:var(--navy);">--</span></div>
+                <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--g50);"><span style="font-size:12px;color:var(--g300);text-transform:uppercase;font-weight:700;">Role</span><span id="prof-role" style="font-size:13.5px;font-weight:600;color:var(--navy);">--</span></div>
+                <div style="display:flex;justify-content:space-between;padding:10px 0;"><span style="font-size:12px;color:var(--g300);text-transform:uppercase;font-weight:700;">Last Login</span><span id="prof-lastlogin" style="font-size:13px;color:var(--g500);">--</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Admin: Team Password Status -->
+        <div class="wg" id="team-pw-status" style="display:none;">
+          <div class="wh"><h3><i class="fas fa-shield-alt" style="color:#ef4444"></i>Team Password Status</h3><span class="bdg b-r" id="pw-changed-count">--</span></div>
+          <table class="dt"><thead><tr><th>Name</th><th>Email</th><th>Role</th><th>Last Login</th><th>Temp Password Changed</th></tr></thead>
+          <tbody id="pw-status-tbody"><tr><td colspan="5" style="text-align:center;padding:20px;color:var(--g300);"><i class="fas fa-spinner fa-spin"></i></td></tr></tbody></table>
         </div>
       </div>
 
@@ -1220,6 +1279,9 @@ var ADMIN_NAV = [
   {sec:'PUBLISH'},
   {id:'careers',icon:'fas fa-briefcase',label:'Job Postings',badge_new:'NEW'},
   {id:'notifications',icon:'fas fa-bullhorn',label:'Push Notifications',badge_new:'NEW'},
+  {id:'blogs',icon:'fas fa-pen-nib',label:'Blog & Articles',badge_new:'NEW'},
+  {sec:'ACCOUNT'},
+  {id:'settings',icon:'fas fa-cog',label:'Settings'},
 ];
 var EMP_NAV = [
   {sec:'OVERVIEW'},{id:'dashboard',icon:'fas fa-th-large',label:'Dashboard'},
@@ -1232,6 +1294,10 @@ var EMP_NAV = [
   {id:'documents',icon:'fas fa-folder-open',label:'Documents'},
   {sec:'ALERTS'},
   {id:'reminders',icon:'fas fa-bell',label:'Reminders'},
+  {sec:'CONTENT'},
+  {id:'blogs',icon:'fas fa-pen-nib',label:'Blog & Articles'},
+  {sec:'ACCOUNT'},
+  {id:'settings',icon:'fas fa-cog',label:'Settings'},
 ];
 var CLIENT_NAV = [
   {sec:'MY PORTAL'},{id:'client-dashboard',icon:'fas fa-th-large',label:'Dashboard'},
@@ -1310,6 +1376,11 @@ function bootApp(){
   // Pre-load team and clients into cache for dropdowns
   api('/api/team').then(function(d){ if(d.success) TEAM_CACHE=d.members; });
   api('/api/clients').then(function(d){ if(d.success) CLIENTS_CACHE=d.clients; });
+  // Load live widget data
+  loadActivityFeed();
+  loadComplianceWidget();
+  loadAlertsWidget();
+  loadRemindersWidget();
 }
 
 function buildNav(){
@@ -1345,6 +1416,8 @@ function nav(id){
   else if(id==='updates')loadDashUpdates();
   else if(id==='careers')loadCareers();
   else if(id==='notifications')loadNotifications();
+  else if(id==='blogs')loadBlogs();
+  else if(id==='settings')loadSettingsPage();
   else if(id==='client-documents')loadClientDocs();
   else if(id==='client-invoices')loadClientInvoices();
 }
@@ -2780,6 +2853,385 @@ async function removeNotification(id) {
   else toast(d.message,'error');
 }
 
+
+// ─── PUSH REGULATORY UPDATE ───────────────────────────────────
+async function pushRegulatoryUpdate() {
+  var title   = document.getElementById('pu-title').value.trim();
+  var source  = document.getElementById('pu-source').value;
+  var cat     = document.getElementById('pu-cat').value;
+  var urgency = document.getElementById('pu-urgency').value;
+  var summary = document.getElementById('pu-summary').value.trim();
+  var link    = document.getElementById('pu-link').value.trim();
+  var date    = document.getElementById('pu-date').value || new Date().toISOString().split('T')[0];
+
+  if (!title) { toast('Title is required.', 'error'); return; }
+
+  var btn = document.getElementById('pu-btn');
+  btn.disabled = true;
+  btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Pushing...';
+
+  try {
+    // Push to notifications API (appears in website Updates panel)
+    var notifRes = await api('/api/notifications', {
+      method: 'POST',
+      body: JSON.stringify({
+        title:    title,
+        body:     summary || null,
+        link:     link || null,
+        category: cat,
+        urgency:  urgency
+      })
+    });
+    if (!notifRes.success) throw new Error(notifRes.message);
+
+    // Also push to regulatory_updates table directly
+    await api('/api/updates/push', {
+      method: 'POST',
+      body: JSON.stringify({
+        title:       title,
+        summary:     summary || null,
+        link:        link || null,
+        source:      source,
+        category:    cat,
+        urgency:     urgency,
+        pub_date:    date
+      })
+    });
+
+    closeM('m-push-update');
+    toast('✅ Update pushed to website: ' + title);
+    // Clear form
+    ['pu-title','pu-summary','pu-link'].forEach(function(id){ document.getElementById(id).value=''; });
+    document.getElementById('pu-date').value = '';
+    // Refresh updates page
+    loadDashUpdates();
+  } catch(e) {
+    toast(e.message || 'Push failed', 'error');
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = '<i class="fas fa-bullhorn"></i> Push to Updates Feed';
+  }
+}
+
+
+// ─────────────────────────────────────────────
+// LIVE DASHBOARD WIDGETS (replace dummy data)
+// ─────────────────────────────────────────────
+async function loadActivityFeed() {
+  var el = document.getElementById('activity-feed');
+  if (!el) return;
+  try {
+    var d = await api('/api/reports/activity');
+    if (!d.success || !d.activity.length) {
+      el.innerHTML = '<div style="padding:16px;text-align:center;color:var(--g300);font-size:13px;">No recent activity.</div>';
+      return;
+    }
+    var iconMap = { task_completed:'fas fa-check ad-gr', client_added:'fas fa-user-plus ad-g', invoice_sent:'fas fa-file-invoice ad-t', reminder_sent:'fas fa-bell ad-r', compliance_filed:'fas fa-check-circle ad-gr' };
+    el.innerHTML = d.activity.slice(0,5).map(function(a) {
+      var icon = iconMap[a.type] || 'fas fa-info-circle ad-t';
+      var parts = icon.split(' ');
+      return '<div class="ai"><div class="adot ' + parts[1] + '"><i class="' + parts[0] + '"></i></div>' +
+        '<div><div class="atxt">' + a.description + '</div><div class="atime">' + a.time_ago + '</div></div></div>';
+    }).join('');
+  } catch(e) {
+    var el = document.getElementById('activity-feed');
+    if (el) el.innerHTML = '<div style="padding:12px;color:var(--g300);font-size:12.5px;text-align:center;">Activity log loading...</div>';
+  }
+}
+
+async function loadComplianceWidget() {
+  var el = document.getElementById('wd-compliance');
+  if (!el) return;
+  try {
+    var d = await api('/api/compliance?limit=4');
+    if (!d.success || !d.entries.length) {
+      el.innerHTML = '<div style="padding:16px;text-align:center;color:var(--g300);font-size:13px;">No compliance deadlines found.</div>';
+      return;
+    }
+    el.innerHTML = d.entries.map(function(e) {
+      var today = new Date().toISOString().split('T')[0];
+      var od = e.due_date < today;
+      var cls = od ? 'cd-u' : 'cd-s';
+      var day = (e.due_date||'').split('-')[2] || '--';
+      var mon = e.due_date ? new Date(e.due_date+'T00:00:00').toLocaleString('en',{month:'short'}).toUpperCase() : '';
+      return '<div class="coi"><div class="codt ' + cls + '">' + day + '<div class="cdm">' + mon + '</div></div>' +
+        '<div class="cob"><div class="cot">' + e.title + '</div><div class="cos">' + (e.type||'') + '</div></div>' +
+        '<div class="coa" style="cursor:pointer;" onclick="loadComp()">' + (od?'Overdue':'Review') + '</div></div>';
+    }).join('');
+  } catch(e) {}
+}
+
+function loadComp(){ nav('compliance'); }
+async function loadAlertsWidget() {
+  var el = document.getElementById('alerts-widget');
+  if (!el) return;
+  try {
+    var d = await api('/api/stats');
+    if (!d.success) return;
+    var s = d.stats;
+    var html = '';
+    if ((s.overdue||0) > 0) {
+      html += '<div class="noi"><div class="noic" style="background:rgba(239,68,68,0.08);color:#ef4444"><i class="fas fa-exclamation-circle"></i></div>' +
+        '<div><div class="notn">' + s.overdue + ' Overdue Tasks</div><div class="nots">Requires immediate attention</div><div class="nott">Click Tasks to review</div></div></div>';
+    }
+    if ((s.inquiries||0) > 0) {
+      html += '<div class="noi"><div class="noic" style="background:rgba(200,169,81,0.1);color:var(--gold-dark)"><i class="fas fa-envelope"></i></div>' +
+        '<div><div class="notn">' + s.inquiries + ' New Inquiries</div><div class="nots">Contact form submissions</div><div class="nott">Today</div></div></div>';
+    }
+    if (!html) html = '<div style="padding:14px;text-align:center;color:var(--g300);font-size:13px;"><i class="fas fa-check-circle" style="color:#22c55e;margin-right:6px;"></i>No alerts — all clear!</div>';
+    el.innerHTML = html;
+  } catch(e) {}
+}
+
+async function loadRemindersWidget() {
+  try {
+    var d = await api('/api/compliance?limit=10');
+    var overdue = document.getElementById('rem-overdue-list');
+    var dueWeek = document.getElementById('rem-due-week');
+    if (!d.success) return;
+    var today = new Date().toISOString().split('T')[0];
+    var week  = new Date(Date.now()+7*86400000).toISOString().split('T')[0];
+    var od    = d.entries.filter(function(e){ return e.due_date < today && e.status !== 'filed'; });
+    var dw    = d.entries.filter(function(e){ return e.due_date >= today && e.due_date <= week; });
+
+    function buildItem(e, urgent) {
+      var day = (e.due_date||'').split('-')[2] || '--';
+      var mon = e.due_date ? new Date(e.due_date+'T00:00:00').toLocaleString('en',{month:'short'}).toUpperCase() : '';
+      var cls = urgent ? 'cd-u' : 'cd-s';
+      var clr = urgent ? '#ef4444' : 'var(--teal)';
+      var parts = [];
+      parts.push('<div class="coi">');
+      parts.push('<div class="codt ' + cls + '">' + day + '<div class="cdm">' + mon + '</div></div>');
+      parts.push('<div class="cob"><div class="cot">' + e.title + '</div><div class="cos">' + (e.type||'') + '</div></div>');
+      parts.push('<div class="coa" style="color:' + clr + ';cursor:pointer;" onclick="openM(&quot;m-sendreminder&quot;)">Send</div>');
+      parts.push('</div>');
+      return parts.join('');
+    }
+
+    var empty = '<div style="padding:14px;text-align:center;color:var(--g300);font-size:13px;">';
+    if (overdue) overdue.innerHTML = od.length ? od.map(function(e){return buildItem(e,true);}).join('') : empty + 'No overdue items 🎉</div>';
+    if (dueWeek) dueWeek.innerHTML = dw.length ? dw.map(function(e){return buildItem(e,false);}).join('') : empty + 'Nothing due this week.</div>';
+  } catch(e) {}
+}
+
+// ─────────────────────────────────────────────
+// BLOGS
+// ─────────────────────────────────────────────
+var ALL_BLOGS = [];
+var EDITING_BLOG_ID = null;
+
+async function loadBlogs() {
+  var tbody = document.getElementById('blog-tbody');
+  if (!tbody) return;
+  tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;padding:24px;color:var(--g300);"><i class="fas fa-spinner fa-spin"></i></td></tr>';
+  var status = document.getElementById('blog-status-filter')?.value || 'published';
+  try {
+    var d = await api('/api/blogs?status=' + status);
+    if (!d.success) throw new Error(d.message);
+    ALL_BLOGS = d.blogs;
+    renderBlogTable(d.blogs);
+  } catch(e) {
+    tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;padding:24px;color:#ef4444;">' + e.message + '</td></tr>';
+  }
+}
+
+function renderBlogTable(blogs) {
+  var tbody = document.getElementById('blog-tbody');
+  if (!blogs.length) {
+    tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;padding:28px;color:var(--g300);">No articles yet. Click "Write Article" to get started.</td></tr>';
+    return;
+  }
+  tbody.innerHTML = blogs.map(function(b) {
+    var date = b.published_at ? new Date(b.published_at).toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'}) : new Date(b.created_at).toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'});
+    return '<tr>' +
+      '<td><div class="dn">' + b.title + '</div><div class="ds">' + (b.tags||'') + '</div></td>' +
+      '<td><span class="bdg b-t">' + (b.category||'General') + '</span></td>' +
+      '<td>' + (b.author_name||'—') + '</td>' +
+      '<td><span class="pl ' + (b.status==='published'?'pl-g':'pl-gray') + '">' + b.status + '</span></td>' +
+      '<td><i class="fas fa-eye" style="margin-right:4px;color:var(--g300);"></i>' + (b.views||0) + '</td>' +
+      '<td>' + date + '</td>' +
+      '<td><div style="display:flex;gap:5px;">' +
+        '<button class="btn btn-o btn-sm" data-bid="' + b.id + '" onclick="editBlog(this.dataset.bid)"><i class="fas fa-edit"></i></button>' +
+        (b.status==='draft'?'<button class="btn btn-g btn-sm" data-bid="' + b.id + '" onclick="publishBlog(this.dataset.bid)"><i class="fas fa-paper-plane"></i></button>':'') +
+        (USER && USER.role==='admin'?'<button class="btn btn-d btn-sm" data-bid="' + b.id + '" onclick="deleteBlog(this.dataset.bid)"><i class="fas fa-trash"></i></button>':'') +
+      '</div></td>' +
+    '</tr>';
+  }).join('');
+}
+
+function filterBlogs() {
+  var q = document.getElementById('blog-search').value.toLowerCase();
+  renderBlogTable(ALL_BLOGS.filter(function(b){ return b.title.toLowerCase().includes(q)||(b.category||'').toLowerCase().includes(q); }));
+}
+
+function blogFmt(type) {
+  var ta = document.getElementById('bl-content');
+  var sel = ta.value.substring(ta.selectionStart, ta.selectionEnd);
+  var result = '';
+  if (type==='bold')   result = '<strong>' + (sel||'bold text') + '</strong>';
+  if (type==='italic') result = '<em>' + (sel||'italic text') + '</em>';
+  if (type==='h2')     result = '<h2>' + (sel||'Heading') + '</h2>';
+  if (type==='h3')     result = '<h3>' + (sel||'Sub-heading') + '</h3>';
+  if (type==='ul')     result = '<ul><li>' + (sel||'Item 1') + '</li><li>Item 2</li></ul>';
+  if (type==='link')   result = '<a href="https://">' + (sel||'Link text') + '</a>';
+  var before = ta.value.substring(0, ta.selectionStart);
+  var after  = ta.value.substring(ta.selectionEnd);
+  ta.value = before + result + after;
+}
+
+async function saveBlog(statusOverride) {
+  var title   = document.getElementById('bl-title').value.trim();
+  var cat     = document.getElementById('bl-cat').value;
+  var status  = statusOverride || document.getElementById('bl-status').value;
+  var tags    = document.getElementById('bl-tags').value.trim();
+  var excerpt = document.getElementById('bl-excerpt').value.trim();
+  var cover   = document.getElementById('bl-cover').value.trim();
+  var content = document.getElementById('bl-content').value.trim();
+  if (!title || !content) { toast('Title and content are required.','error'); return; }
+
+  var btn = document.getElementById('blog-submit-btn');
+  btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving...';
+  try {
+    var method = EDITING_BLOG_ID ? 'PUT' : 'POST';
+    var url    = EDITING_BLOG_ID ? '/api/blogs/' + EDITING_BLOG_ID : '/api/blogs';
+    var d = await api(url, { method, body:JSON.stringify({title,category:cat,status,tags,excerpt,cover_image:cover,content}) });
+    if (!d.success) throw new Error(d.message);
+    closeM('m-writeblog');
+    toast('✅ Article ' + (status==='published'?'published':'saved as draft') + ': ' + title);
+    EDITING_BLOG_ID = null;
+    ['bl-title','bl-tags','bl-excerpt','bl-cover','bl-content'].forEach(function(id){ document.getElementById(id).value=''; });
+    loadBlogs();
+  } catch(e) { toast(e.message,'error'); }
+  finally { btn.disabled=false; btn.innerHTML='<i class="fas fa-paper-plane"></i> Publish'; }
+}
+
+async function editBlog(id) {
+  var blog = ALL_BLOGS.find(function(b){ return String(b.id)===String(id); });
+  if (!blog) { var d = await api('/api/blogs/'+id); if (!d.success) return; blog = d.blog; }
+  EDITING_BLOG_ID = id;
+  document.getElementById('blog-modal-title').textContent = 'Edit Article';
+  document.getElementById('bl-title').value   = blog.title || '';
+  document.getElementById('bl-cat').value     = blog.category || 'General';
+  document.getElementById('bl-status').value  = blog.status || 'draft';
+  document.getElementById('bl-tags').value    = blog.tags || '';
+  document.getElementById('bl-excerpt').value = blog.excerpt || '';
+  document.getElementById('bl-cover').value   = blog.cover_image || '';
+  // Need full content - fetch
+  var full = await api('/api/blogs/'+id);
+  document.getElementById('bl-content').value = full.success ? (full.blog.content||'') : '';
+  openM('m-writeblog');
+}
+
+async function publishBlog(id) {
+  var d = await api('/api/blogs/'+id, { method:'PUT', body:JSON.stringify({status:'published'}) });
+  if (d.success) { toast('✅ Published!'); loadBlogs(); } else toast(d.message,'error');
+}
+
+async function deleteBlog(id) {
+  if (!confirm('Delete this article?')) return;
+  var d = await api('/api/blogs/'+id, { method:'DELETE' });
+  if (d.success) { toast('Deleted.'); loadBlogs(); } else toast(d.message,'error');
+}
+
+// ─────────────────────────────────────────────
+// SETTINGS — CHANGE PASSWORD
+// ─────────────────────────────────────────────
+async function changePassword() {
+  var cur  = document.getElementById('pw-current').value;
+  var nw   = document.getElementById('pw-new').value;
+  var conf = document.getElementById('pw-confirm').value;
+  var al   = document.getElementById('pw-alert');
+
+  function showPwAlert(msg, type) {
+    al.style.display='block';
+    al.style.background = type==='error' ? 'rgba(239,68,68,0.08)' : 'rgba(34,197,94,0.08)';
+    al.style.color      = type==='error' ? '#dc2626' : '#16a34a';
+    al.style.border     = type==='error' ? '1px solid rgba(239,68,68,0.2)' : '1px solid rgba(34,197,94,0.2)';
+    al.textContent = msg;
+  }
+
+  if (!cur || !nw || !conf) { showPwAlert('All fields required.','error'); return; }
+  if (nw !== conf)           { showPwAlert('Passwords do not match.','error'); return; }
+  if (nw.length < 8)         { showPwAlert('Min 8 characters.','error'); return; }
+
+  try {
+    var d = await api('/api/auth/change-password', { method:'POST', body:JSON.stringify({current_password:cur,new_password:nw}) });
+    if (!d.success) throw new Error(d.message);
+    showPwAlert('✅ Password changed successfully!','success');
+    ['pw-current','pw-new','pw-confirm'].forEach(function(id){ document.getElementById(id).value=''; });
+  } catch(e) { showPwAlert('❌ ' + e.message,'error'); }
+}
+
+function loadSettingsPage() {
+  // Load profile info
+  if (USER) {
+    setText('prof-name', USER.name);
+    setText('prof-email', USER.email);
+    setText('prof-role', (USER.role||'').toUpperCase());
+    setText('prof-lastlogin', USER.last_login ? new Date(USER.last_login).toLocaleString('en-IN') : 'This session');
+  }
+  // Admin: show team password status
+  if (USER && USER.role === 'admin') {
+    var el = document.getElementById('team-pw-status');
+    if (el) el.style.display = 'block';
+    loadPwStatus();
+  }
+}
+
+async function loadPwStatus() {
+  var tbody = document.getElementById('pw-status-tbody');
+  if (!tbody) return;
+  try {
+    var d = await api('/api/auth/users');
+    if (!d.success) throw new Error(d.message);
+    var unchanged = d.users.filter(function(u){ return !u.temp_password_changed && u.role !== 'admin'; }).length;
+    setText('pw-changed-count', unchanged + ' not changed');
+    tbody.innerHTML = d.users.map(function(u) {
+      var changed = u.temp_password_changed;
+      return '<tr>' +
+        '<td class="dn">' + u.name + '</td>' +
+        '<td style="font-size:12px;">' + u.email + '</td>' +
+        '<td><span class="bdg ' + (u.role==='admin'?'b-r':'b-t') + '">' + u.role + '</span></td>' +
+        '<td style="font-size:12px;">' + (u.last_login ? new Date(u.last_login).toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'}) : 'Never') + '</td>' +
+        '<td><span class="pl ' + (changed?'pl-g':'pl-r') + '">' + (changed?'✅ Changed':'⚠️ Using Temp Password') + '</span></td>' +
+      '</tr>';
+    }).join('');
+  } catch(e) { if(tbody) tbody.innerHTML = '<tr><td colspan="5" style="padding:16px;color:#ef4444;">' + e.message + '</td></tr>'; }
+}
+
+// ─────────────────────────────────────────────
+// ONBOARD CLIENT EMAIL
+// ─────────────────────────────────────────────
+function openOnboardModal(clientId, clientName, clientEmail) {
+  CURRENT_CLIENT_ID = clientId;
+  document.getElementById('ob-c-name').value  = clientName || '';
+  document.getElementById('ob-c-email').value = clientEmail || '';
+  document.getElementById('ob-c-result').style.display = 'none';
+  openM('m-onboard-client');
+}
+
+async function sendOnboardEmail() {
+  var name  = document.getElementById('ob-c-name').value.trim();
+  var email = document.getElementById('ob-c-email').value.trim();
+  var res   = document.getElementById('ob-c-result');
+  var btn   = document.getElementById('ob-c-btn');
+
+  if (!email) { res.style.display='block'; res.style.background='rgba(239,68,68,0.08)'; res.style.color='#dc2626'; res.textContent='Email is required.'; return; }
+
+  btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+  try {
+    var d = await api('/api/auth/onboard-client', { method:'POST', body:JSON.stringify({client_id:CURRENT_CLIENT_ID, name, email}) });
+    if (!d.success) throw new Error(d.message);
+    res.style.display='block'; res.style.background='rgba(34,197,94,0.08)'; res.style.color='#16a34a'; res.style.border='1px solid rgba(34,197,94,0.2)';
+    res.textContent = '✅ ' + d.message + (d.temp_password ? ' Temp password: ' + d.temp_password : '');
+    btn.innerHTML = '<i class="fas fa-check"></i> Sent!';
+  } catch(e) {
+    res.style.display='block'; res.style.background='rgba(239,68,68,0.08)'; res.style.color='#dc2626'; res.style.border='1px solid rgba(239,68,68,0.2)';
+    res.textContent = '❌ ' + e.message;
+    btn.disabled=false; btn.innerHTML='<i class="fas fa-paper-plane"></i> Send Welcome Email';
+  }
+}
+
 </script>
 
 <!-- CLIENT DETAIL / EDIT MODAL -->
@@ -2979,6 +3431,135 @@ async function removeNotification(id) {
     <div class="mfoot">
       <button class="btn btn-o" onclick="closeM('m-pushnotif')">Cancel</button>
       <button class="btn btn-p" id="notif-submit-btn" onclick="pushNotification()"><i class="fas fa-bullhorn"></i> Push Now</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- PUSH REGULATORY UPDATE MODAL -->
+<div class="mb" id="m-push-update">
+  <div class="mbox">
+    <div class="mh"><h3>Push Regulatory Update</h3><button class="mx" onclick="closeM('m-push-update')"><i class="fas fa-times"></i></button></div>
+    <div class="mbody">
+      <div style="background:rgba(15,123,108,0.06);border:1px solid rgba(15,123,108,0.15);border-radius:8px;padding:12px 16px;margin-bottom:18px;font-size:13px;color:var(--g700);">
+        <i class="fas fa-info-circle" style="color:var(--teal);margin-right:6px;"></i>
+        This update will appear in the <strong>Reg. Updates</strong> feed on the website and dashboard instantly — visible to all visitors.
+      </div>
+      <div class="fg">
+        <div class="ff"><label class="fl">Title *</label><input class="finp" id="pu-title" placeholder="e.g. CBDT extends ITR filing deadline to 31st Aug 2025"/></div>
+        <div><label class="fl">Source</label>
+          <select class="fsel" id="pu-source">
+            <option>Income Tax</option>
+            <option>GST / CBIC</option>
+            <option>MCA</option>
+            <option>SEBI</option>
+            <option>ICAI</option>
+            <option>RBI</option>
+            <option>GS Advisory</option>
+            <option>PIB</option>
+            <option>Others</option>
+          </select>
+        </div>
+        <div><label class="fl">Category</label>
+          <select class="fsel" id="pu-cat">
+            <option>Notification</option>
+            <option>Circular</option>
+            <option>Press Release</option>
+            <option>Announcement</option>
+            <option>Deadline Alert</option>
+            <option>Amendment</option>
+          </select>
+        </div>
+        <div><label class="fl">Priority</label>
+          <select class="fsel" id="pu-urgency">
+            <option value="Medium">Medium</option>
+            <option value="High">High — shows URGENT badge</option>
+            <option value="Low">Low</option>
+          </select>
+        </div>
+        <div class="ff"><label class="fl">Summary / Details</label>
+          <textarea class="fta" id="pu-summary" style="min-height:90px;" placeholder="Brief description of the update..."></textarea>
+        </div>
+        <div class="ff"><label class="fl">Source Link (Optional)</label>
+          <input class="finp" id="pu-link" placeholder="https://incometaxindia.gov.in/..."/>
+        </div>
+        <div class="ff"><label class="fl">Effective / Published Date</label>
+          <input class="finp" id="pu-date" type="date"/>
+        </div>
+      </div>
+    </div>
+    <div class="mfoot">
+      <button class="btn btn-o" onclick="closeM('m-push-update')">Cancel</button>
+      <button class="btn btn-g" id="pu-btn" onclick="pushRegulatoryUpdate()"><i class="fas fa-bullhorn"></i> Push to Updates Feed</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- WRITE BLOG MODAL -->
+<div class="mb" id="m-writeblog">
+  <div class="mbox lg">
+    <div class="mh"><h3 id="blog-modal-title">Write Article</h3><button class="mx" onclick="closeM('m-writeblog')"><i class="fas fa-times"></i></button></div>
+    <div class="mbody">
+      <div class="fg">
+        <div class="ff"><label class="fl">Title *</label><input class="finp" id="bl-title" placeholder="e.g. Understanding GST Input Tax Credit in 2025"/></div>
+        <div><label class="fl">Category</label>
+          <select class="fsel" id="bl-cat">
+            <option>GST & Indirect Tax</option><option>Income Tax</option><option>Company Law & MCA</option>
+            <option>UAE Tax & VAT</option><option>Accounting & Audit</option><option>Finance & Investment</option>
+            <option>Payroll & HR</option><option>Virtual CFO</option><option>Budget Analysis</option><option>General</option>
+          </select>
+        </div>
+        <div><label class="fl">Status</label>
+          <select class="fsel" id="bl-status">
+            <option value="draft">Draft</option><option value="published">Publish Now</option>
+          </select>
+        </div>
+        <div class="ff"><label class="fl">Tags (comma separated)</label><input class="finp" id="bl-tags" placeholder="e.g. GST, ITC, Tax Planning"/></div>
+        <div class="ff"><label class="fl">Excerpt (shown in listing)</label><textarea class="fta" id="bl-excerpt" style="min-height:60px;" placeholder="Brief summary shown in blog listing..."></textarea></div>
+        <div class="ff"><label class="fl">Cover Image URL (Optional)</label><input class="finp" id="bl-cover" placeholder="https://images.unsplash.com/..."/></div>
+        <div class="ff">
+          <label class="fl">Article Content *</label>
+          <div style="border:1.5px solid var(--g100);border-radius:6px;overflow:hidden;">
+            <div style="background:var(--g50);padding:6px 10px;display:flex;gap:6px;border-bottom:1px solid var(--g100);">
+              <button type="button" onclick="blogFmt('bold')" style="border:none;background:none;padding:4px 8px;cursor:pointer;font-weight:700;color:var(--navy);">B</button>
+              <button type="button" onclick="blogFmt('italic')" style="border:none;background:none;padding:4px 8px;cursor:pointer;font-style:italic;color:var(--navy);">I</button>
+              <button type="button" onclick="blogFmt('h2')" style="border:none;background:none;padding:4px 8px;cursor:pointer;font-weight:700;color:var(--navy);font-size:11px;">H2</button>
+              <button type="button" onclick="blogFmt('h3')" style="border:none;background:none;padding:4px 8px;cursor:pointer;font-weight:700;color:var(--navy);font-size:11px;">H3</button>
+              <button type="button" onclick="blogFmt('ul')" style="border:none;background:none;padding:4px 8px;cursor:pointer;color:var(--navy);">• List</button>
+              <button type="button" onclick="blogFmt('link')" style="border:none;background:none;padding:4px 8px;cursor:pointer;color:var(--teal);">🔗</button>
+            </div>
+            <textarea class="fta" id="bl-content" style="min-height:280px;border:none;border-radius:0;" placeholder="Write your article here... You can use HTML tags for formatting."></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mfoot">
+      <button class="btn btn-o" onclick="closeM('m-writeblog')">Cancel</button>
+      <button class="btn btn-o" onclick="saveBlog('draft')"><i class="fas fa-save"></i> Save Draft</button>
+      <button class="btn btn-p" id="blog-submit-btn" onclick="saveBlog('published')"><i class="fas fa-paper-plane"></i> Publish</button>
+    </div>
+  </div>
+</div>
+
+<!-- ONBOARD CLIENT MODAL (from client detail) -->
+<div class="mb" id="m-onboard-client">
+  <div class="mbox">
+    <div class="mh"><h3>Send Onboarding Email</h3><button class="mx" onclick="closeM('m-onboard-client')"><i class="fas fa-times"></i></button></div>
+    <div class="mbody">
+      <div style="background:rgba(15,123,108,0.06);border:1px solid rgba(15,123,108,0.12);border-radius:8px;padding:14px 16px;margin-bottom:18px;font-size:13px;color:var(--g700);">
+        <i class="fas fa-info-circle" style="color:var(--teal);margin-right:6px;"></i>
+        This will create a client portal account and send a welcome email with a <strong>temporary password</strong>. The client must change it on first login.
+      </div>
+      <div class="fg">
+        <div><label class="fl">Client Name</label><input class="finp" id="ob-c-name" readonly style="background:var(--g50);"/></div>
+        <div><label class="fl">Email Address</label><input class="finp" id="ob-c-email" type="email" placeholder="client@email.com"/></div>
+      </div>
+      <div id="ob-c-result" style="display:none;padding:12px 14px;border-radius:6px;font-size:13px;font-weight:600;margin-top:12px;"></div>
+    </div>
+    <div class="mfoot">
+      <button class="btn btn-o" onclick="closeM('m-onboard-client')">Cancel</button>
+      <button class="btn btn-p" id="ob-c-btn" onclick="sendOnboardEmail()"><i class="fas fa-paper-plane"></i> Send Welcome Email</button>
     </div>
   </div>
 </div>
