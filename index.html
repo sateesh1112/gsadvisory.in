@@ -1663,11 +1663,13 @@
 </footer>
 
 <script>
-// Scroll animation
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
-  }, { threshold: 0.12 });
-  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+// All DOM-dependent code wrapped in DOMContentLoaded
+  document.addEventListener('DOMContentLoaded', function() {
+    // Scroll animation
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
   // Counter animation
   function animateCounter(el) {
@@ -1705,6 +1707,8 @@
     });
   });
 
+  }); // end DOMContentLoaded
+
   function openLogin() {
     var m = document.getElementById('loginModal');
     if(m){ m.classList.add('active'); document.body.style.overflow='hidden'; }
@@ -1713,13 +1717,7 @@
     var m = document.getElementById('loginModal');
     if(m){ m.classList.remove('active'); document.body.style.overflow=''; }
   }
-  document.addEventListener('DOMContentLoaded', function(){
-    var m = document.getElementById('loginModal');
-    if(m) m.addEventListener('click', function(e){ if(e.target===this) closeLogin(); });
-    // Backdrop for updates panel
-    var po = document.getElementById('panelOverlay');
-    if(po) po.addEventListener('click', closeUpdates);
-  });
+  // loginModal and panelOverlay listeners moved to main DOMContentLoaded above
   function openUpdates() {
     document.getElementById('updatesPanel').classList.add('active');
     document.getElementById('panelOverlay').classList.add('active');
