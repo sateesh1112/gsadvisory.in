@@ -1663,7 +1663,7 @@
 </footer>
 
 <script>
-  // Scroll animation
+// Scroll animation
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
   }, { threshold: 0.12 });
@@ -1724,6 +1724,7 @@
     document.getElementById('updatesPanel').classList.add('active');
     document.getElementById('panelOverlay').classList.add('active');
     document.body.style.overflow='hidden';
+    loadUpdates('all');
   }
   function closeUpdates() {
     document.getElementById('updatesPanel').classList.remove('active');
@@ -1810,104 +1811,7 @@
       '<div style="padding:16px;text-align:center;font-size:12px;color:rgba(255,255,255,0.35);">Live feed loading... Check incometaxindia.gov.in for latest</div>';
   }
 
-  // Original openUpdates — now also loads data
-  var _origOpenUpdates = openUpdates;
-  function openUpdates() {
-    document.getElementById('updatesPanel').classList.add('active');
-    document.getElementById('panelOverlay').classList.add('active');
-    document.body.style.overflow='hidden';
-    loadUpdates('all');
-  }
-  function closeUpdates() {
-    document.getElementById('updatesPanel').classList.remove('active');
-    document.getElementById('panelOverlay').classList.remove('active');
-    document.body.style.overflow='';
-  }
-
-
-</script>
-
-<div class="panel-overlay" id="panelOverlay" onclick="closeUpdates()"></div>
-
-<div class="modal-overlay" id="loginModal">
-  <div class="modal-box">
-    <button class="modal-close" onclick="closeLogin()"><i class="fas fa-times"></i></button>
-    <div class="modal-logo">
-      <div class="modal-hex">GS</div>
-      <h3>GS Advisory</h3>
-      <p>Be Wise, Take Our Advice</p>
-    </div>
-    <div class="modal-divider"></div>
-    <div style="display:flex;background:#f1f5f9;border-radius:8px;padding:4px;margin-bottom:20px;gap:4px;">
-      <button id="roleTab_employee" onclick="setLoginRole('employee')"
-        style="flex:1;padding:9px;border-radius:6px;border:none;font-size:13px;font-weight:700;cursor:pointer;background:linear-gradient(135deg,#0d1b2a,#0f7b6c);color:#fff;font-family:inherit;">
-        <i class="fas fa-user-tie" style="margin-right:5px;"></i>Employee
-      </button>
-      <button id="roleTab_client" onclick="setLoginRole('client')"
-        style="flex:1;padding:9px;border-radius:6px;border:none;font-size:13px;font-weight:700;cursor:pointer;background:transparent;color:#64748b;font-family:inherit;">
-        <i class="fas fa-briefcase" style="margin-right:5px;"></i>Client
-      </button>
-    </div>
-    <div class="modal-form">
-      <div id="loginError" style="display:none;background:#fef2f2;border:1px solid #fecaca;color:#dc2626;padding:10px 14px;border-radius:6px;font-size:13px;margin-bottom:14px;"></div>
-      <div class="form-group">
-        <label>Email Address</label>
-        <input type="email" id="ml_email" placeholder="employee@gsadvisory.in"/>
-      </div>
-      <div class="form-group">
-        <label>Password</label>
-        <div style="position:relative;">
-          <input type="password" id="ml_pass" placeholder="Enter your password" onkeydown="if(event.key==='Enter')doRealLogin()" style="width:100%;padding-right:44px;"/>
-          <i class="fas fa-eye" id="ml_eye" onclick="toggleMLEye()" style="position:absolute;right:14px;top:50%;transform:translateY(-50%);color:#94a3b8;cursor:pointer;"></i>
-        </div>
-      </div>
-      <div class="modal-forgot"><a href="#">Forgot Password?</a></div>
-      <button class="modal-btn" id="loginBtn" onclick="doRealLogin()"><i class="fas fa-sign-in-alt"></i> Sign In to Portal</button>
-    </div>
-    <p class="modal-footer-note">New client? <a href="#" onclick="showOnboardForm()">Request Portal Access</a></p>
-  </div>
-</div>
-
-<div class="updates-panel" id="updatesPanel">
-  <div class="updates-header">
-    <h3><i class="fas fa-rss"></i> Regulatory Updates</h3>
-    <div style="display:flex;align-items:center;gap:8px;">
-      <span id="upd-last-fetch" style="font-size:10px;color:rgba(255,255,255,0.4);"></span>
-      <button class="updates-close" onclick="closeUpdates()"><i class="fas fa-times"></i></button>
-    </div>
-  </div>
-  <div style="padding:10px 16px;">
-    <div style="position:relative;">
-      <i class="fas fa-search" style="position:absolute;left:10px;top:50%;transform:translateY(-50%);color:#94a3b8;font-size:12px;"></i>
-      <input id="upd-search" placeholder="Search updates..." oninput="filterUpdates()"
-        style="width:100%;padding:8px 10px 8px 30px;border:1px solid rgba(255,255,255,0.1);border-radius:6px;background:rgba(255,255,255,0.06);color:#fff;font-size:12.5px;outline:none;"/>
-    </div>
-  </div>
-  <div class="updates-tabs" style="overflow-x:auto;white-space:nowrap;padding:0 16px 10px;">
-    <div class="updates-tab active" onclick="loadUpdates('all',this)">All</div>
-    <div class="updates-tab" onclick="loadUpdates('Income Tax',this)">Income Tax</div>
-    <div class="updates-tab" onclick="loadUpdates('GST / CBIC',this)">GST</div>
-    <div class="updates-tab" onclick="loadUpdates('MCA',this)">MCA</div>
-    <div class="updates-tab" onclick="loadUpdates('SEBI',this)">SEBI</div>
-    <div class="updates-tab" onclick="loadUpdates('ICAI',this)">ICAI</div>
-  </div>
-  <div class="updates-body" id="updatesBody">
-    <div style="padding:30px;text-align:center;color:rgba(255,255,255,0.4);">
-      <i class="fas fa-spinner fa-spin" style="font-size:24px;margin-bottom:10px;display:block;"></i>
-      Loading live updates...
-    </div>
-  </div>
-
-  </div>
-  <div class="updates-footer">
-    <a href="#">View All Updates &nbsp;<i class="fas fa-arrow-right"></i></a>
-  </div>
-</div>
-
-
-<script>
 var API_URL = 'https://gsadvisory-backend.onrender.com';
-// API_URL defined above
 
 // ── CONTACT FORM ──────────────────────────────────────────────
 async function submitContact() {
@@ -2040,7 +1944,65 @@ async function doRealLogin() {
     btn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Sign In to Portal';
   }
 }
+
+function showOnboardForm() {
+  closeLogin();
+  localStorage.setItem('gs_show_onboard','1');
+  window.open('gs_dashboard.html','_blank');
+}
+
 </script>
+
+<!-- LOGIN MODAL -->
+<div class="modal-overlay" id="loginModal">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div class="modal-logo">
+        <div class="modal-hex">GS</div>
+        <h2>GS Advisory</h2>
+        <p>Be Wise, Take Our Advice</p>
+      </div>
+      <button class="modal-close" onclick="closeLogin()"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="modal-divider"></div>
+    <!-- Role Tabs -->
+    <div style="display:flex;background:#f1f5f9;border-radius:8px;padding:4px;margin-bottom:20px;gap:4px;">
+      <button id="roleTab_employee" onclick="setLoginRole('employee')"
+        style="flex:1;padding:9px;border-radius:6px;border:none;font-size:13px;font-weight:700;cursor:pointer;background:linear-gradient(135deg,#0d1b2a,#0f7b6c);color:#fff;font-family:inherit;">
+        <i class="fas fa-user-tie" style="margin-right:5px;"></i>Employee
+      </button>
+      <button id="roleTab_client" onclick="setLoginRole('client')"
+        style="flex:1;padding:9px;border-radius:6px;border:none;font-size:13px;font-weight:700;cursor:pointer;background:transparent;color:#64748b;font-family:inherit;">
+        <i class="fas fa-briefcase" style="margin-right:5px;"></i>Client
+      </button>
+    </div>
+    <div class="modal-form">
+      <div id="loginError" style="display:none;background:#fef2f2;border:1px solid #fecaca;color:#dc2626;padding:10px 14px;border-radius:6px;font-size:13px;margin-bottom:14px;"></div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" id="ml_email" placeholder="employee@gsadvisory.in"/>
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <div style="position:relative;">
+          <input type="password" id="ml_pass" placeholder="Enter your password"
+            onkeydown="if(event.key==='Enter')doRealLogin()"
+            style="width:100%;padding-right:44px;"/>
+          <i class="fas fa-eye" id="ml_eye" onclick="toggleMLEye()"
+            style="position:absolute;right:14px;top:50%;transform:translateY(-50%);color:#94a3b8;cursor:pointer;"></i>
+        </div>
+      </div>
+      <div class="modal-forgot"><a href="#">Forgot Password?</a></div>
+      <button class="modal-btn" id="loginBtn" onclick="doRealLogin()">
+        <i class="fas fa-sign-in-alt"></i> Sign In to Portal
+      </button>
+    </div>
+    <p class="modal-footer-note">New client? <a href="#" onclick="showOnboardForm()">Request Portal Access</a></p>
+  </div>
+</div>
+
+<!-- PANEL OVERLAY -->
+<div class="panel-overlay" id="panelOverlay"></div>
 
 </body>
 </html>
